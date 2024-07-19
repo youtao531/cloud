@@ -1,0 +1,66 @@
+server:
+  shutdown: graceful
+  max-http-request-header-size: 1MB
+spring:
+  application:
+    name: jetbrains-cloud
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 100MB
+  lifecycle:
+    timeout-per-shutdown-phase: 60s
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    cache-duration: 1000
+    use-code-as-default-message: false
+    always-use-message-format: false
+    fallback-to-system-locale: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    jmx:
+      exposure:
+        include: '*'
+  info:
+    build:
+      enabled: true
+logging:
+  config: classpath:logging/logback-spring.xml
+  file:
+    path: logs
+  logback:
+    rollingpolicy:
+      max-file-size: 1GB
+      total-size-cap: 10GB
+      max-history: 15
+  level:
+    com.makto.seetaface: debug
+knife4j:
+  enable: true
+  setting:
+    swagger-model-name: Model
+    enable-footer-custom: true
+    footer-custom-content: '@2024 all rights reserved.'
+    enable-host-text: 127.0.0.1:8080
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    groups-order: desc
+  group-configs:
+    - group: 'f'
+      display-name: 'Face Services'
+      paths-to-match: '/api/**'
+      packages-to-scan: 'com.framework.cloud.controller'

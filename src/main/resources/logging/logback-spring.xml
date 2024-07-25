@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" scanPeriod="10" debug="false">
+    <springProperty name="appName"          scope="context" source="spring.application.name"/>
+    <springProperty name="filePath"         scope="context" source="logging.file.path" defaultValue="logs"/>
+    <springProperty name="fileMaxSize"      scope="context" source="logging.logback.rollingpolicy.max-file-size" defaultValue="1GB"/>
+    <springProperty name="fileTotalSizeCap" scope="context" source="logging.logback.rollingpolicy.total-size-cap" defaultValue="10GB"/>
+    <springProperty name="fileMaxHistory"   scope="context" source="logging.logback.rollingpolicy.max-history" defaultValue="15"/>
+    <springProperty name="level"            scope="context" source="logging.level.com.cloud.biz" defaultValue="INFO"/>
+    <contextName>${appName}</contextName>
+
+    <property name="logPattern" value="%yellow(%date{MM-dd HH:mm:ss.SSSXXX}) %highlight(${LOG_LEVEL_PATTERN:-%5p}) %magenta(${PID:- }) [%blue(%replace(%X{X-NONCE}){'( |$)', ''}) %highlight(%6.6t)] %cyan(%-40.40logger{30}:%4.4L) : %m%n%X{msg}"/>
+
+    <appender name="appender_console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${logPattern}</pattern>
+        </encoder>
+    </appender>
+
+    <springProfile name="default,dev">
+        <logger name="com.makto" level="INFO"/>
+        <logger name="org.springframework.amqp" level="ERROR"/>
+        <logger name="com.alibaba.nacos.client.naming" level="ERROR"/>
+        <logger name="org.mybatis.spring.mapper.ClassPathMapperScanner" level="ERROR"/>
+        <logger name="org.springframework.boot.actuate.endpoint.EndpointId" level="ERROR"/>
+        <root level="INFO">
+            <appender-ref ref="appender_console"/>
+        </root>
+    </springProfile>
+    <springProfile name="test,prod,docker">
+        <appender name="appender_file_all" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${filePath}/all.log</file>
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <pattern>${logPattern}</pattern>
+            </encoder>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${filePath}/%d{yyyy-MM-dd}.all.%i.gz</fileNamePattern>
+                <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    <maxFileSize>${fileMaxSize}</maxFileSize>
+                </timeBasedFileNamingAndTriggeringPolicy>
+                <totalSizeCap>${fileTotalSizeCap}</totalSizeCap>
+                <maxHistory>${fileMaxHistory}</maxHistory>
+            </rollingPolicy>
+        </appender>
+        <appender name="appender_file_all_async" class="ch.qos.logback.classic.AsyncAppender">
+            <discardingThreshold>0</discardingThreshold>
+            <appender-ref ref="appender_file_all"/>
+        </appender>
+        <appender name="appender_file_warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${filePath}/warn.log</file>
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <pattern>${logPattern}</pattern>
+            </encoder>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${filePath}/%d{yyyy-MM-dd}.warn.%i.gz</fileNamePattern>
+                <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    <maxFileSize>${fileMaxSize}</maxFileSize>
+                </timeBasedFileNamingAndTriggeringPolicy>
+                <totalSizeCap>${fileTotalSizeCap}</totalSizeCap>
+                <maxHistory>${fileMaxHistory}</maxHistory>
+            </rollingPolicy>
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>WARN</level>
+            </filter>
+        </appender>
+        <appender name="appender_file_warn_async" class="ch.qos.logback.classic.AsyncAppender">
+            <discardingThreshold>0</discardingThreshold>
+            <appender-ref ref="appender_file_warn"/>
+        </appender>
+
+        <logger name="com.makto" level="${level}"/>
+        <logger name="org.springframework.amqp" level="ERROR"/>
+        <logger name="com.alibaba.nacos.client.naming" level="ERROR"/>
+        <logger name="org.mybatis.spring.mapper.ClassPathMapperScanner" level="ERROR"/>
+        <logger name="org.springframework.boot.actuate.endpoint.EndpointId" level="ERROR"/>
+        <root level="INFO">
+            <appender-ref ref="appender_console"/>
+            <appender-ref ref="appender_file_all_async"/>
+            <appender-ref ref="appender_file_warn_async"/>
+        </root>
+    </springProfile>
+</configuration>

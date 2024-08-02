@@ -1,6 +1,6 @@
 package com.framework.cloud;
 
-import com.makto.seetaface.infrastructure.configuration.StartupTimeApplicationContextInitializer;
+import com.framework.cloud.infrastructure.configuration.StartupTimeApplicationContextInitializer;
 import org.dromara.hutool.core.io.file.FileUtil;
 import org.dromara.hutool.extra.management.HostInfo;
 import org.dromara.hutool.extra.management.ManagementUtil;

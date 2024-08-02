@@ -27,8 +27,6 @@ public class AgePredictorPool extends GenericObjectPool<AgePredictor> {
 
             /**
              *  borrowObject方法的主要流程是首先看里面的idleReferences是否为空，如果不为空，则从里面取一个对象出来并返回，否则通过factory来创建一个object。
-             * @return
-             * @throws Exception
              */
             @Override
             public PooledObject makeObject() throws Exception {

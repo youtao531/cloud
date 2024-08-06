@@ -1,8 +1,8 @@
-package com.makto.seetaface.domain.model.basic;
+package com.framework.cloud.domain.model.basic;
 
-import cn.hutool.core.util.ArrayUtil;
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.extra.spring.SpringUtil;
+import org.dromara.hutool.core.array.ArrayUtil;
+import org.dromara.hutool.core.text.StrUtil;
+import org.dromara.hutool.extra.spring.SpringUtil;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 
@@ -28,7 +28,7 @@ public class MessageSourceHelper {
         Locale locale = LocaleContextHolder.getLocale();
         Object[] array = null;
         if (ArrayUtil.isNotEmpty(args)) {
-            array = Arrays.stream(args).map(StrUtil::nullToEmpty).toArray();
+            array = Arrays.stream(args).map(StrUtil::toStringOrEmpty).toArray();
         }
         return messageSource.getMessage(key, array, locale);
     }

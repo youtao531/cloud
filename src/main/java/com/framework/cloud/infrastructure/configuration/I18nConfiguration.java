@@ -1,7 +1,7 @@
-package com.makto.seetaface.infrastructure.configuration;
+package com.framework.cloud.infrastructure.configuration;
 
-import com.makto.seetaface.infrastructure.i18n.CustomLocaleChangeInterceptor;
-import com.makto.seetaface.infrastructure.web.interceptor.ServiceContextInterceptor;
+import com.framework.cloud.infrastructure.i18n.CustomLocaleChangeInterceptor;
+import com.framework.cloud.infrastructure.web.interceptor.ServiceContextInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;

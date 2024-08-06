@@ -1,7 +1,7 @@
-package com.makto.seetaface.domain.repository;
+package com.framework.cloud.domain.repository;
 
-import com.makto.seetaface.interfaces.vo.FaceModel;
-import com.makto.seetaface.interfaces.vo.FaceModelScore;
+import com.framework.cloud.interfaces.vo.FaceModel;
+import com.framework.cloud.interfaces.vo.FaceModelScore;
 
 import java.util.List;
 

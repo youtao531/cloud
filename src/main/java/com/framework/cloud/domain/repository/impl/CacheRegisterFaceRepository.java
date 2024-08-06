@@ -1,11 +1,11 @@
-package com.makto.seetaface.domain.repository.impl;
+package com.framework.cloud.domain.repository.impl;
 
-import cn.hutool.core.util.IdUtil;
-import com.makto.seetaface.domain.repository.RegisterFaceRepository;
-import com.makto.seetaface.infrastructure.properties.FaceProperties;
-import com.makto.seetaface.interfaces.vo.FaceModel;
-import com.makto.seetaface.interfaces.vo.FaceModelScore;
+import com.framework.cloud.domain.repository.RegisterFaceRepository;
+import com.framework.cloud.infrastructure.properties.FaceProperties;
+import com.framework.cloud.interfaces.vo.FaceModel;
+import com.framework.cloud.interfaces.vo.FaceModelScore;
 import lombok.extern.slf4j.Slf4j;
+import org.dromara.hutool.core.data.id.IdUtil;
 import org.springframework.beans.BeanUtils;
 
 import java.util.*;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 /**
  * 通过缓存注册与搜索人脸
  *
- * @author Lcc 2023/10/7 19:23
+ * @author youtao531 2023/10/7 19:23
  */
 @Slf4j
 public class CacheRegisterFaceRepository implements RegisterFaceRepository {
@@ -130,7 +130,7 @@ public class CacheRegisterFaceRepository implements RegisterFaceRepository {
         }
         List<FaceModelScore> search = search(features, topNLimit, minimum_score);
 
-        return search.get(0);
+        return search.getFirst();
     }
 
     public float cosineSimilarity(float[] leftVector, float[] rightVector) {

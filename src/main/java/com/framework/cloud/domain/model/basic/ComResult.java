@@ -1,8 +1,8 @@
-package com.makto.seetaface.domain.model.basic;
+package com.framework.cloud.domain.model.basic;
 
-import cn.hutool.core.util.StrUtil;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import org.dromara.hutool.core.text.StrUtil;
 
 import java.io.Serializable;
 

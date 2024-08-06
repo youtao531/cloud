@@ -1,4 +1,4 @@
-package com.makto.seetaface.infrastructure.i18n;
+package com.framework.cloud.infrastructure.i18n;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

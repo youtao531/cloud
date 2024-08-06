@@ -1,13 +1,9 @@
-package com.makto.seetaface.infrastructure.configuration;
+package com.framework.cloud.infrastructure.configuration;
 
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.collection.ListUtil;
-import cn.hutool.core.map.MapUtil;
-import cn.hutool.extra.spring.SpringUtil;
+import com.framework.cloud.domain.model.basic.ComHeaders;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.makto.seetaface.domain.model.basic.ComHeaders;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.info.Info;
@@ -15,6 +11,10 @@ import io.swagger.v3.oas.models.media.StringSchema;
 import io.swagger.v3.oas.models.parameters.HeaderParameter;
 import io.swagger.v3.oas.models.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
+import org.dromara.hutool.core.collection.CollUtil;
+import org.dromara.hutool.core.collection.ListUtil;
+import org.dromara.hutool.core.map.MapUtil;
+import org.dromara.hutool.extra.spring.SpringUtil;
 import org.springdoc.core.customizers.GlobalOpenApiCustomizer;
 import org.springdoc.core.customizers.GlobalOperationCustomizer;
 import org.springdoc.core.properties.SpringDocConfigProperties;
@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 public class SwaggerConfiguration {
 
     public static final String X_ORDER_KEY = "x-order";
-    private static final Map<String, String> tagOrderMap = MapUtil.newConcurrentHashMap();
+    private static final Map<String, String> tagOrderMap = MapUtil.newSafeConcurrentHashMap();
 
     /**
      * 排序控制器Tag
@@ -115,7 +115,7 @@ public class SwaggerConfiguration {
         HeaderParameter country = buildHeaderParameter(ComHeaders.COUNTRY_KEY, "国家代码，例如：TZ、GH、CI等", 0, 2, 2);
         HeaderParameter timestamp = buildHeaderParameter(ComHeaders.TIME_KEY, "时间戳，13位毫秒值。例如：1653498543312", 2, 13, 13);
         HeaderParameter nonce = buildHeaderParameter(ComHeaders.NONCE_KEY, "随机串，一次性的唯一字符串。例如：c83dd35612927090a14c754caae6af12", 3, 8, 64);
-        List<HeaderParameter> parameters = ListUtil.toList(country, timestamp, nonce);
+        List<HeaderParameter> parameters = ListUtil.of(country, timestamp, nonce);
         parameters.forEach(operation::addParametersItem);
     }
 

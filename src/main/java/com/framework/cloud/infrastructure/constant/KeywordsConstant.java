@@ -1,10 +1,10 @@
-package com.makto.seetaface.infrastructure.constant;
+package com.framework.cloud.infrastructure.constant;
 
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author Lcc 2023/10/17 14:58
+ * @author youtao531 2023/10/17 14:58
  */
 public class KeywordsConstant {
 

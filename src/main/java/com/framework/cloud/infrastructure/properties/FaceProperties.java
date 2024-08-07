@@ -1,6 +1,6 @@
-package com.makto.seetaface.infrastructure.properties;
+package com.framework.cloud.infrastructure.properties;
 
-import com.makto.seetaface.domain.model.RegisterMethod;
+import com.framework.cloud.domain.model.RegisterMethod;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * Seetaface6配置
  *
- * @author Lcc 2023/5/20 14:57
+ * @author youtao531 2023/5/20 14:57
  */
 @Data
 @Component

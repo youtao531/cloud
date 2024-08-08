@@ -1,8 +1,8 @@
-package com.makto.seetaface.infrastructure.exception.error;
+package com.framework.cloud.infrastructure.exception.error;
 
-import com.makto.seetaface.domain.model.basic.ComCodes;
-import com.makto.seetaface.infrastructure.exception.constant.ErrorException;
-import com.makto.seetaface.infrastructure.exception.constant.NotFoundException;
+import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.infrastructure.exception.constant.ErrorException;
+import com.framework.cloud.infrastructure.exception.constant.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;

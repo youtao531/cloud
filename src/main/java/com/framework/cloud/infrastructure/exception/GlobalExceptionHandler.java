@@ -1,9 +1,9 @@
-package com.makto.seetaface.infrastructure.exception;
+package com.framework.cloud.infrastructure.exception;
 
-import com.makto.seetaface.domain.model.basic.ComCodes;
-import com.makto.seetaface.domain.model.basic.ComResult;
-import com.makto.seetaface.infrastructure.exception.constant.ComException;
-import com.makto.seetaface.infrastructure.exception.constant.ErrorException;
+import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.domain.model.basic.ComResult;
+import com.framework.cloud.infrastructure.exception.constant.ComException;
+import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

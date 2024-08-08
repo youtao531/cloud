@@ -1,11 +1,11 @@
-package com.makto.seetaface.infrastructure.web;
+package com.framework.cloud.infrastructure.web;
 
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.map.MapUtil;
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
 import jakarta.servlet.ServletRequest;
+import org.dromara.hutool.core.collection.CollUtil;
+import org.dromara.hutool.core.map.MapUtil;
+import org.dromara.hutool.core.text.StrUtil;
+import org.dromara.hutool.json.JSONObject;
+import org.dromara.hutool.json.JSONUtil;
 
 import java.util.Map;
 import java.util.Objects;
@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 /**
- * @author Lcc 2023/4/26 11:45
+ * @author youtao531 2023/4/26 11:45
  */
 public class WebParamUtil {
 

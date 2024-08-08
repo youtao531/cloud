@@ -1,10 +1,10 @@
-package com.makto.seetaface.infrastructure.configuration;
+package com.framework.cloud.infrastructure.configuration;
 
-import com.makto.seetaface.domain.model.RegisterMethod;
-import com.makto.seetaface.domain.repository.RegisterFaceRepository;
-import com.makto.seetaface.domain.repository.impl.CacheRegisterFaceRepository;
-import com.makto.seetaface.domain.repository.impl.MySQLRegisterFaceRepository;
-import com.makto.seetaface.infrastructure.properties.FaceProperties;
+import com.framework.cloud.domain.model.RegisterMethod;
+import com.framework.cloud.domain.repository.RegisterFaceRepository;
+import com.framework.cloud.domain.repository.impl.CacheRegisterFaceRepository;
+import com.framework.cloud.domain.repository.impl.MySQLRegisterFaceRepository;
+import com.framework.cloud.infrastructure.properties.FaceProperties;
 import com.seeta.pool.SeetaConfSetting;
 import com.seeta.proxy.*;
 import com.seeta.sdk.SeetaDevice;

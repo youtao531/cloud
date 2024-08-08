@@ -1,14 +1,14 @@
-package com.makto.seetaface.infrastructure.web.interceptor;
+package com.framework.cloud.infrastructure.web.interceptor;
 
-import cn.hutool.extra.servlet.JakartaServletUtil;
-import cn.hutool.json.JSONUtil;
-import com.makto.seetaface.domain.model.basic.ComHeaders;
-import com.makto.seetaface.infrastructure.web.WebParamUtil;
-import com.makto.seetaface.infrastructure.web.context.OpenContextImpl;
-import com.makto.seetaface.infrastructure.web.context.ServiceContext;
+import com.framework.cloud.domain.model.basic.ComHeaders;
+import com.framework.cloud.infrastructure.web.WebParamUtil;
+import com.framework.cloud.infrastructure.web.context.OpenContextImpl;
+import com.framework.cloud.infrastructure.web.context.ServiceContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.dromara.hutool.http.server.servlet.ServletUtil;
+import org.dromara.hutool.json.JSONUtil;
 import org.slf4j.MDC;
 import org.springframework.lang.NonNull;
 import org.springframework.web.method.HandlerMethod;
@@ -22,7 +22,7 @@ import java.util.Map;
 /**
  * 进入的请求入口 拦截器
  *
- * @author Lcc 2023/4/26 14:52
+ * @author youtao531 2023/4/26 14:52
  */
 @Slf4j
 public class ServiceContextInterceptor implements HandlerInterceptor {
@@ -57,10 +57,9 @@ public class ServiceContextInterceptor implements HandlerInterceptor {
     }
 
     private void initOpenContext(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        String remoteIp = JakartaServletUtil.getClientIP(request);
+        String remoteIp = ServletUtil.getClientIP(request);
         LocalDateTime now = LocalDateTime.now();
         String message = """
-                                
                 =================== Start ===================
                 开始时间\t: %s
                 参数信息\t: %s %s %s
@@ -75,7 +74,7 @@ public class ServiceContextInterceptor implements HandlerInterceptor {
                 //解决 multiform/data 请求的 OpenContext 为空问题
                 || handler instanceof ResourceHttpRequestHandler
         ) {
-            Map<String, String> headerMap = JakartaServletUtil.getHeaderMap(request);
+            Map<String, String> headerMap = ServletUtil.getHeaderMap(request);
             Map<String, Object> requestParams = WebParamUtil.getRequestParams(request);
             context.setOpenContext(new OpenContextImpl(requestParams, headerMap, remoteIp));
         }

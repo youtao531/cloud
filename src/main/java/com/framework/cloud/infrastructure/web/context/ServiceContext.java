@@ -1,4 +1,4 @@
-package com.makto.seetaface.infrastructure.web.context;
+package com.framework.cloud.infrastructure.web.context;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author Lcc 2023/4/26 14:21
+ * @author youtao531 2023/4/26 14:21
  */
 @Slf4j
 public class ServiceContext extends ConcurrentHashMap<String, Object> {

@@ -1,13 +1,13 @@
-package com.makto.seetaface.infrastructure.web.context;
+package com.framework.cloud.infrastructure.web.context;
 
-import com.makto.seetaface.domain.model.basic.ComHeaders;
+import com.framework.cloud.domain.model.basic.ComHeaders;
 import org.slf4j.MDC;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Lcc 2023/4/26 14:46
+ * @author youtao531 2023/4/26 14:46
  */
 public class OpenContextImpl implements OpenContext {
 

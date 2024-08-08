@@ -1,9 +1,9 @@
-package com.makto.seetaface.infrastructure.web.context;
+package com.framework.cloud.infrastructure.web.context;
 
-import cn.hutool.core.util.StrUtil;
-import com.makto.seetaface.domain.model.basic.ComHeaders;
+import com.framework.cloud.domain.model.basic.ComHeaders;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.LocaleUtils;
+import org.dromara.hutool.core.text.StrUtil;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import java.util.Locale;

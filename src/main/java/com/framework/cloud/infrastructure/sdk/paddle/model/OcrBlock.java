@@ -1,4 +1,4 @@
-package com.makto.seetaface.infrastructure.sdk.paddle.model;
+package com.framework.cloud.infrastructure.sdk.paddle.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author Lcc 2023/10/14 13:50
+ * @author youtao531 2023/10/14 13:50
  */
 @Data
 @NoArgsConstructor

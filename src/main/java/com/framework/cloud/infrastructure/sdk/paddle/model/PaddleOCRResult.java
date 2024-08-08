@@ -1,4 +1,4 @@
-package com.makto.seetaface.infrastructure.sdk.paddle.model;
+package com.framework.cloud.infrastructure.sdk.paddle.model;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author Lcc 2023/10/14 11:33
+ * @author youtao531 2023/10/14 11:33
  */
 @Data
 public class PaddleOCRResult implements Serializable {

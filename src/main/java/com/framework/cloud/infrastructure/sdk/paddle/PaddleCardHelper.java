@@ -1,9 +1,8 @@
-package com.makto.seetaface.infrastructure.sdk.paddle;
+package com.framework.cloud.infrastructure.sdk.paddle;
 
-import com.makto.seetaface.domain.model.CardType;
-import com.makto.seetaface.infrastructure.sdk.paddle.model.BlockInfo;
-import com.makto.seetaface.infrastructure.sdk.paddle.model.BlockMap;
-import com.makto.seetaface.infrastructure.sdk.paddle.model.OcrBlock;
+import com.framework.cloud.domain.model.CardType;
+import com.framework.cloud.infrastructure.sdk.paddle.model.BlockMap;
+import com.framework.cloud.infrastructure.sdk.paddle.model.OcrBlock;
 import org.springframework.beans.factory.InitializingBean;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author Lcc 2023/10/14 16:03
+ * @author youtao531 2023/10/14 16:03
  */
 public interface PaddleCardHelper extends InitializingBean {
 

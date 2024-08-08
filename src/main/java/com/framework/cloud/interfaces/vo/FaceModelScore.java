@@ -1,4 +1,4 @@
-package com.makto.seetaface.interfaces.vo;
+package com.framework.cloud.interfaces.vo;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

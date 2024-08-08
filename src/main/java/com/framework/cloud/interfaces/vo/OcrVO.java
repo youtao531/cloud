@@ -1,8 +1,8 @@
-package com.makto.seetaface.interfaces.vo;
+package com.framework.cloud.interfaces.vo;
 
-import com.makto.seetaface.domain.model.CardType;
-import com.makto.seetaface.infrastructure.sdk.paddle.model.BlockMap;
-import com.makto.seetaface.infrastructure.sdk.paddle.model.OcrBlock;
+import com.framework.cloud.domain.model.CardType;
+import com.framework.cloud.infrastructure.sdk.paddle.model.BlockMap;
+import com.framework.cloud.infrastructure.sdk.paddle.model.OcrBlock;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author Lcc 2023/10/14 14:06
+ * @author youtao531 2023/10/14 14:06
  */
 @Data
 @NoArgsConstructor

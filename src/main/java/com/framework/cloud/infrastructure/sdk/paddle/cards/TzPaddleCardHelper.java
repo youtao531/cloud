@@ -1,18 +1,19 @@
-package com.makto.seetaface.infrastructure.sdk.paddle.cards;
+package com.framework.cloud.infrastructure.sdk.paddle.cards;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.NumberUtil;
-import cn.hutool.core.util.StrUtil;
-import com.makto.seetaface.domain.model.CardType;
-import com.makto.seetaface.domain.model.basic.ComCodes;
-import com.makto.seetaface.infrastructure.constant.KeywordsConstant;
-import com.makto.seetaface.infrastructure.exception.constant.ErrorException;
-import com.makto.seetaface.infrastructure.sdk.paddle.PaddleCardHelper;
-import com.makto.seetaface.infrastructure.sdk.paddle.model.BlockInfo;
-import com.makto.seetaface.infrastructure.sdk.paddle.model.BlockMap;
-import com.makto.seetaface.infrastructure.sdk.paddle.model.OcrBlock;
+import com.framework.cloud.domain.model.CardType;
+import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.infrastructure.constant.KeywordsConstant;
+import com.framework.cloud.infrastructure.exception.constant.ErrorException;
+import com.framework.cloud.infrastructure.sdk.paddle.PaddleCardHelper;
+import com.framework.cloud.infrastructure.sdk.paddle.model.BlockInfo;
+import com.framework.cloud.infrastructure.sdk.paddle.model.BlockMap;
+import com.framework.cloud.infrastructure.sdk.paddle.model.OcrBlock;
 import lombok.extern.slf4j.Slf4j;
+import org.dromara.hutool.core.bean.BeanUtil;
+import org.dromara.hutool.core.collection.CollUtil;
+import org.dromara.hutool.core.math.NumberUtil;
+import org.dromara.hutool.core.text.StrUtil;
+import org.dromara.hutool.core.text.split.SplitUtil;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -23,7 +24,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * @author Lcc 2023/10/14 16:09
+ * @author youtao531 2023/10/14 16:09
  */
 @Slf4j
 @Component(value = "tzPaddleCardHelper")
@@ -86,7 +87,7 @@ public class TzPaddleCardHelper implements PaddleCardHelper {
                 .ifPresent(block -> {
                     String id = block.getText().toUpperCase();
                     Double reliability = block.getReliability();
-                    String dateOfBirth = StrUtil.split(id, "-").get(0);
+                    String dateOfBirth = SplitUtil.split(id, "-").getFirst();
 
                     blockMap.setId(new BlockInfo(KeywordsConstant.ID_KEY, id, reliability));
                     blockMap.setDateOfBirth(new BlockInfo(KeywordsConstant.BIRTH_KEY, dateOfBirth, reliability));
@@ -200,7 +201,7 @@ public class TzPaddleCardHelper implements PaddleCardHelper {
                     .ifPresent(block -> {
                         String text = block.getText().toUpperCase();
                         String splitName = text.contains("SEX") ? "SEX" : "GENDER";
-                        List<String> strings = StrUtil.split(text, splitName, true, false);
+                        List<String> strings = SplitUtil.split(text, splitName, true, false);
                         if (strings.size() == 2) {
                             String str = strings.get(1);
                             if (StrUtil.equalsAnyIgnoreCase(str, "ME", "KE")) {
@@ -357,7 +358,7 @@ public class TzPaddleCardHelper implements PaddleCardHelper {
     private static OcrBlock formatterBlockText(OcrBlock x, String splitName) {
         String text = x.getText();
         String split = text.contains(":") ? ":" : splitName;
-        List<String> strings = StrUtil.split(text, split, true, false);
+        List<String> strings = SplitUtil.split(text, split, true, false);
         if (strings.size() != 2) {
             return null;
         }

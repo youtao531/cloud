@@ -1,6 +1,6 @@
-package com.makto.seetaface.infrastructure.web.filter;
+package com.framework.cloud.infrastructure.web.filter;
 
-import com.makto.seetaface.infrastructure.web.MyHttpServletRequestWrapper;
+import com.framework.cloud.infrastructure.web.MyHttpServletRequestWrapper;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,7 +15,7 @@ import java.util.Optional;
 /**
  * 重写请求体 过滤器
  *
- * @author Lcc 2023/4/26 11:41
+ * @author youtao531 2023/4/26 11:41
  */
 @Component
 @Order(-101)

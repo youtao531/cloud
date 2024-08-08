@@ -1,4 +1,4 @@
-package com.makto.seetaface.infrastructure.configuration;
+package com.framework.cloud.infrastructure.configuration;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContextInitializer;
@@ -11,7 +11,7 @@ import java.time.temporal.ChronoUnit;
 /**
  * 应用启动时间
  *
- * @author Lcc 2024/5/8 上午11:42
+ * @author youtao531 2024/5/8 上午11:42
  */
 @Slf4j
 public class StartupTimeApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableWebApplicationContext> {

@@ -1,14 +1,13 @@
-package com.makto.seetaface.domain.model;
+package com.framework.cloud.domain.model;
 
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
-import com.makto.seetaface.domain.model.basic.ComCodes;
-import com.makto.seetaface.infrastructure.exception.constant.ErrorException;
+import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.apache.commons.lang3.LocaleUtils;
+import org.dromara.hutool.core.collection.CollUtil;
+import org.dromara.hutool.core.text.StrUtil;
 import org.springframework.lang.NonNull;
 
 import java.io.Serializable;
@@ -17,9 +16,9 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * 国家模型
+ * Country Model
  *
- * @author Lcc 2023/6/30 15:22
+ * @author youtao531 2023/6/30 15:22
  */
 @Data
 @Builder
@@ -75,19 +74,12 @@ public class CountryModel implements Serializable {
             throw new ErrorException(ComCodes.COMMON_FAIL.getCode(), "NOT_SUPPORT_COUNTRY_CODE");
         }
 
-        Locale locale = locales.get(0);
+        Locale locale = locales.getFirst();
         String displayCountry = null == displayLocale ? locale.getDisplayCountry() : locale.getDisplayCountry(displayLocale);
         return CountryModel.builder()
                 .country(locale.getCountry())
                 .iso3Country(locale.getISO3Country())
                 .displayCountry(displayCountry)
                 .build();
-    }
-
-    public static void main(String[] args) {
-        allCountryCodes.forEach(country -> {
-            CountryModel countryModel = CountryModel.ofCountry(country);
-            System.out.println(JSONUtil.toJsonStr(countryModel));
-        });
     }
 }

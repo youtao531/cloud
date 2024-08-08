@@ -1,4 +1,4 @@
-package com.makto.seetaface.domain.model.basic;
+package com.framework.cloud.domain.model.basic;
 
 import java.util.List;
 

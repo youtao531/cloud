@@ -1,6 +1,6 @@
-package com.makto.seetaface.infrastructure.exception.constant;
+package com.framework.cloud.infrastructure.exception.constant;
 
-import com.makto.seetaface.domain.model.basic.ComCodes;
+import com.framework.cloud.domain.model.basic.ComCodes;
 import lombok.Getter;
 
 /**

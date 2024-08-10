@@ -1,10 +1,10 @@
-package com.makto.seetaface.interfaces.web;
+package com.framework.cloud.interfaces.web;
 
+import com.framework.cloud.application.FaceAgeService;
+import com.framework.cloud.domain.model.basic.ComResult;
+import com.framework.cloud.infrastructure.utils.MultipartFileHelper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.makto.seetaface.application.FaceAgeService;
-import com.makto.seetaface.domain.model.basic.ComResult;
-import com.makto.seetaface.infrastructure.utils.MultipartFileHelper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -24,7 +24,7 @@ import java.util.Map;
 /**
  * 年龄检测
  *
- * @author Lcc 2023/5/20 14:57
+ * @author youtao531 2023/5/20 14:57
  */
 @Slf4j
 @RestController

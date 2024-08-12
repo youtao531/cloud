@@ -1,13 +1,11 @@
-package com.makto.seetaface.application.impl;
+package com.framework.cloud.application.impl;
 
-import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.util.ArrayUtil;
-import com.makto.seetaface.application.*;
-import com.makto.seetaface.domain.model.basic.ComCodes;
-import com.makto.seetaface.domain.repository.RegisterFaceRepository;
-import com.makto.seetaface.infrastructure.exception.constant.ErrorException;
-import com.makto.seetaface.interfaces.vo.FaceModel;
-import com.makto.seetaface.interfaces.vo.FaceModelScore;
+import com.framework.cloud.application.*;
+import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.domain.repository.RegisterFaceRepository;
+import com.framework.cloud.infrastructure.exception.constant.ErrorException;
+import com.framework.cloud.interfaces.vo.FaceModel;
+import com.framework.cloud.interfaces.vo.FaceModelScore;
 import com.seeta.proxy.*;
 import com.seeta.sdk.FaceAntiSpoofing;
 import com.seeta.sdk.SeetaImageData;
@@ -16,6 +14,8 @@ import com.seeta.sdk.SeetaRect;
 import com.seeta.sdk.util.SeetafaceUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.dromara.hutool.core.array.ArrayUtil;
+import org.dromara.hutool.core.date.DateUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -148,7 +148,7 @@ public class SeetafaceServiceImpl implements FaceAgeService, FaceGenderService, 
             //一个人脸的基本信息
             FaceModel faceModel = new FaceModel();
             faceModel.setFeatures(features);
-            faceModel.setCreateTime(DateUtil.now());
+            faceModel.setCreateTime(DateUtil.formatNow());
             faceModel.setFileName(imgName);
             faceModel.setSeetaRect(detectResult.detect);
             faceModel.setPointFS(pointFS);

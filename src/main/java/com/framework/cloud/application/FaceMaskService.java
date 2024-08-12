@@ -1,4 +1,4 @@
-package com.makto.seetaface.application;
+package com.framework.cloud.application;
 
 import com.seeta.proxy.MaskDetectorProxy;
 import org.springframework.web.multipart.MultipartFile;
@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * 人脸口罩检测
  *
- * @author Lcc 2023/9/25 11:16
+ * @author youtao531 2024/7/25 11:16
  */
 public interface FaceMaskService {
 

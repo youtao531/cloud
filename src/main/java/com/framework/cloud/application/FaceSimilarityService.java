@@ -1,11 +1,11 @@
-package com.makto.seetaface.application;
+package com.framework.cloud.application;
 
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 人脸相似度检测
  *
- * @author Lcc 2023/9/25 11:16
+ * @author youtao531 2023/9/25 11:16
  */
 public interface FaceSimilarityService {
 

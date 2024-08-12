@@ -1,10 +1,10 @@
-package com.makto.seetaface.interfaces.web;
+package com.framework.cloud.interfaces.web;
 
+import com.framework.cloud.application.FaceSimilarityService;
+import com.framework.cloud.domain.model.basic.ComResult;
+import com.framework.cloud.infrastructure.utils.MultipartFileHelper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.makto.seetaface.application.FaceSimilarityService;
-import com.makto.seetaface.domain.model.basic.ComResult;
-import com.makto.seetaface.infrastructure.utils.MultipartFileHelper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

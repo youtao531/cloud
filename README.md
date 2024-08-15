@@ -11,4 +11,4 @@
 * This project is an SDK project compiled from the seetaface6 source code and seetaface6JNI source code.
 * Windows and Linux environment adaptation. (Support aarch64 environment--to be tested)
 * Support GPU
-* Jdk8-jdk14 are all available
+* JDK8 above

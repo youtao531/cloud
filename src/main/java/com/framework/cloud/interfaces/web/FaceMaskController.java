@@ -22,6 +22,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
+/**
+ * 口罩检测
+ *
+ * @author youtao531 2023/5/20 14:57
+ */
 @Slf4j
 @RestController
 @ApiSupport(order = 4)

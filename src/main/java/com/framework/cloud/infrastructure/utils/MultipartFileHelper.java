@@ -10,7 +10,7 @@ import java.util.Base64;
 import java.util.Map;
 
 /**
- * @author Lcc 2023/10/12 16:53
+ * @author youtao531 on 2024/8/15 10:55
  */
 public final class MultipartFileHelper {
 

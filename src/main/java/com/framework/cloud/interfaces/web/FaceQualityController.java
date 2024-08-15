@@ -23,7 +23,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Map;
 
 /**
- * @author youtao531 2023/9/25 11:16
+ * 质量检测
+ *
+ * @author youtao531 2023/5/20 14:57
  */
 @Slf4j
 @RestController

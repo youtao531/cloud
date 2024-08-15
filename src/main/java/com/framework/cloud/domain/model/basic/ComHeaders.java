@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 接口 通用请求标头定义
  *
- * @author Yt on 2023/1/7 10:36
+ * @author youtao531 on 2023/1/7 10:36
  * @formatter:off
  */
 public final class ComHeaders {

@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * 人脸相似度检测
  *
- * @author youtao531 2023/9/25 11:16
+ * @author youtao531 on 2023/9/25 11:16
  */
 public interface FaceSimilarityService {
 

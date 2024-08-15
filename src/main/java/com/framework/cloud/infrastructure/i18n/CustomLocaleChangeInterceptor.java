@@ -11,7 +11,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 /**
  * 自定义国际化拦截器
  *
- * @author Yt on 2023/1/5 20:59
+ * @author youtao531 on 2023/1/5 20:59
  */
 public class CustomLocaleChangeInterceptor extends LocaleChangeInterceptor {
 

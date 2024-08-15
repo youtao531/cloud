@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * TODO 通过数据库注册与搜索人脸
  *
- * @author youtao531 2023/10/7 19:23
+ * @author youtao531 on 2023/10/7 19:23
  */
 public class MySQLRegisterFaceRepository implements RegisterFaceRepository {
 

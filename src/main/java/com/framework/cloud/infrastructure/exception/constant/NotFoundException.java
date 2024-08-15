@@ -5,7 +5,7 @@ import com.framework.cloud.domain.model.basic.ComCodes;
 /**
  * 资源不存在
  *
- * @author Yt on 2023/1/5 18:42
+ * @author youtao531 on 2023/1/5 18:42
  */
 public class NotFoundException extends ErrorException {
 

@@ -5,7 +5,7 @@ import com.framework.cloud.domain.model.basic.ComCodes;
 /**
  * 未授权
  *
- * @author Yt on 2023/1/6 14:46
+ * @author youtao531 on 2023/1/6 14:46
  */
 public class UnauthorizedException extends ErrorException {
 

@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * 人脸注册
  *
- * @author youtao531 2024/7/25 14:27
+ * @author youtao531 on 2024/7/25 14:27
  */
 public interface FaceRegisterService {
 

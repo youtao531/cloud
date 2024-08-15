@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author youtao531 2023/10/14 16:03
+ * @author youtao531 on 2023/10/14 16:03
  */
 public interface PaddleCardHelper extends InitializingBean {
 

@@ -26,7 +26,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * @author youtao531 2023/10/14 16:09
+ * @author youtao531 on 2023/10/14 16:09
  */
 @Slf4j
 @Component(value = "ghPaddleCardHelper")

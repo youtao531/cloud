@@ -4,7 +4,7 @@ import com.framework.cloud.domain.model.basic.ComCodes;
 import lombok.Getter;
 
 /**
- * @author Yt on 2023/1/5 16:26
+ * @author youtao531 on 2023/1/5 16:26
  */
 @Getter
 public class ErrorException extends ComException {

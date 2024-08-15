@@ -29,7 +29,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * @author Yt on 2022/12/7 14:21
+ * @author youtao531 on 2022/12/7 14:21
  */
 @Configuration
 public class SwaggerConfiguration {

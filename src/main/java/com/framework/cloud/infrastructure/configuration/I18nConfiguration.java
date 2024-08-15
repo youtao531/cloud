@@ -14,7 +14,7 @@ import java.util.Locale;
 /**
  * 国际化配置
  *
- * @author Yt on 2022/12/10 18:25
+ * @author youtao531 on 2022/12/10 18:25
  */
 @Configuration
 public class I18nConfiguration implements WebMvcConfigurer {

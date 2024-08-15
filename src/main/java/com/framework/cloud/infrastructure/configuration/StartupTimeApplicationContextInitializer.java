@@ -11,7 +11,7 @@ import java.time.temporal.ChronoUnit;
 /**
  * 应用启动时间
  *
- * @author youtao531 2024/5/8 上午11:42
+ * @author youtao531 on 2024/5/8 上午11:42
  */
 @Slf4j
 public class StartupTimeApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableWebApplicationContext> {

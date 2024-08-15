@@ -28,7 +28,7 @@ import java.util.Map;
  * 将底库人脸头像向量特征注册到内存中，项目重启后注册的人脸将失效
  * 可以将人脸向量特征保存到数据库，项目启动时加载到内存
  *
- * @author youtao531 2023/5/20 14:57
+ * @author youtao531 on 2023/5/20 14:57
  */
 @Slf4j
 @RestController

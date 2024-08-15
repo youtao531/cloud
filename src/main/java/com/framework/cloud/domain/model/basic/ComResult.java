@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * 结果封装
  *
- * @author Yt on 2022/9/20 16:49
+ * @author youtao531 on 2022/9/20 16:49
  */
 @Data
 public class ComResult<T> implements Serializable {

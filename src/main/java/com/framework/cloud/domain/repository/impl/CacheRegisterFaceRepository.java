@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 /**
  * 通过缓存注册与搜索人脸
  *
- * @author youtao531 2023/10/7 19:23
+ * @author youtao531 on 2023/10/7 19:23
  */
 @Slf4j
 public class CacheRegisterFaceRepository implements RegisterFaceRepository {

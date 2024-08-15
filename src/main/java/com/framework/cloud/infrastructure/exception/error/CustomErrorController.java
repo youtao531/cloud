@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * 修改 AbstractErrorController
  *
- * @author Yt on 2023/1/5 15:51
+ * @author youtao531 on 2023/1/5 15:51
  */
 @Slf4j
 @Controller

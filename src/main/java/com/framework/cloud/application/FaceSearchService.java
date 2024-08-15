@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * 人脸搜索
  *
- * @author youtao531 2023/9/25 11:16
+ * @author youtao531 on 2023/9/25 11:16
  */
 public interface FaceSearchService {
 

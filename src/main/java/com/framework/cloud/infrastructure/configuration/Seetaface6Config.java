@@ -21,6 +21,8 @@ import java.util.Arrays;
 
 /**
  * seetaface6识别器 连接池代理配置
+ *
+ * @author youtao531 on 2022/12/10 18:25
  */
 @Slf4j
 @Configuration

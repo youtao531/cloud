@@ -29,6 +29,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
+ * 接口文档配置
+ *
  * @author youtao531 on 2022/12/7 14:21
  */
 @Configuration

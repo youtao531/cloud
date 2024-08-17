@@ -7,13 +7,13 @@ import com.framework.cloud.domain.model.basic.ComCodes;
  *
  * @author youtao531 on 2023/1/5 18:42
  */
-public class NotFoundException extends ErrorException {
+public class NotFoundCommonException extends ErrorException {
 
-    public NotFoundException() {
+    public NotFoundCommonException() {
         this(null);
     }
 
-    public NotFoundException(String errorMessage) {
+    public NotFoundCommonException(String errorMessage) {
         super(ComCodes.NOT_FOUND.getCode(), errorMessage);
     }
 }

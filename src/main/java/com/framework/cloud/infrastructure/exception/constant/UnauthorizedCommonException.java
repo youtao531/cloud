@@ -7,13 +7,13 @@ import com.framework.cloud.domain.model.basic.ComCodes;
  *
  * @author youtao531 on 2023/1/6 14:46
  */
-public class UnauthorizedException extends ErrorException {
+public class UnauthorizedCommonException extends ErrorException {
 
-    public UnauthorizedException() {
+    public UnauthorizedCommonException() {
         this(null);
     }
 
-    public UnauthorizedException(String errorMessage) {
+    public UnauthorizedCommonException(String errorMessage) {
         super(ComCodes.UNAUTHORIZED.getCode(), errorMessage);
     }
 }

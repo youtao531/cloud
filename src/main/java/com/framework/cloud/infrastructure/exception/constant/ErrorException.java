@@ -7,7 +7,7 @@ import lombok.Getter;
  * @author youtao531 on 2023/1/5 16:26
  */
 @Getter
-public class ErrorException extends ComException {
+public class ErrorException extends CommonException {
 
     private final Integer statusCode;
     private final String errorMessage;

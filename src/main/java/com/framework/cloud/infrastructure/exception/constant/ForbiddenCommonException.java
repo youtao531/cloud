@@ -5,13 +5,13 @@ import com.framework.cloud.domain.model.basic.ComCodes;
 /**
  * @author youtao531 on 2023/1/5 18:51
  */
-public class ForbiddenException extends ErrorException {
+public class ForbiddenCommonException extends ErrorException {
 
-    public ForbiddenException() {
+    public ForbiddenCommonException() {
         this(null);
     }
 
-    public ForbiddenException(String errorMessage) {
+    public ForbiddenCommonException(String errorMessage) {
         super(ComCodes.FORBIDDEN.getCode(), errorMessage);
     }
 }

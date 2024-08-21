@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.exception.constant;
 
-import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.domain.core.ComCodes;
 
 /**
  * 资源不存在

@@ -1,7 +1,7 @@
 package com.framework.cloud.infrastructure.exception;
 
-import com.framework.cloud.domain.model.basic.ComCodes;
-import com.framework.cloud.domain.model.basic.ComResult;
+import com.framework.cloud.domain.core.ComCodes;
+import com.framework.cloud.domain.core.ComResult;
 import com.framework.cloud.infrastructure.exception.constant.CommonException;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +19,18 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ResponseStatus(value = HttpStatus.OK)
+    @ExceptionHandler(value = CommonException.class)
+    public ComResult<Void> handleComException(CommonException exception) {
+        return buildResponseBodyForThrowable(exception);
+    }
+
+    @ResponseStatus(value = HttpStatus.OK)
+    @ExceptionHandler(value = Exception.class)
+    public ComResult<Void> handleException(Throwable throwable) {
+        return buildResponseBodyForThrowable(throwable);
+    }
+
     public static ComResult<Void> buildResponseBodyForThrowable(Object throwable) {
         log.warn("全局Exception异常处理器 {}, e={}", throwable.getClass().getSimpleName(), throwable);
         CommonException commonException = null;
@@ -33,17 +45,5 @@ public class GlobalExceptionHandler {
         ComCodes codes = ComCodes.getEnum(commonException.getCode());
         String message = commonException.getMessage();
         return ComResult.fail(codes, message);
-    }
-
-    @ResponseStatus(value = HttpStatus.OK)
-    @ExceptionHandler(value = CommonException.class)
-    public ComResult<Void> handleComException(CommonException exception) {
-        return buildResponseBodyForThrowable(exception);
-    }
-
-    @ResponseStatus(value = HttpStatus.OK)
-    @ExceptionHandler(value = Exception.class)
-    public ComResult<Void> handleException(Throwable throwable) {
-        return buildResponseBodyForThrowable(throwable);
     }
 }

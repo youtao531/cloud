@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.web.context;
 
-import com.framework.cloud.domain.model.basic.ComHeaders;
+import com.framework.cloud.domain.core.ComHeaders;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.LocaleUtils;
 import org.dromara.hutool.core.text.StrUtil;

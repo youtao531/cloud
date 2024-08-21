@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.utils;
 
-import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.domain.core.ComCodes;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import org.dromara.hutool.core.map.MapUtil;
 import org.springframework.web.multipart.MultipartFile;

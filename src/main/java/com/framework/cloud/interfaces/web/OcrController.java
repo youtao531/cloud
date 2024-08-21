@@ -2,7 +2,7 @@ package com.framework.cloud.interfaces.web;
 
 import com.framework.cloud.application.OcrService;
 import com.framework.cloud.domain.model.CountryModel;
-import com.framework.cloud.domain.model.basic.ComResult;
+import com.framework.cloud.domain.core.ComResult;
 import com.framework.cloud.infrastructure.utils.MultipartFileHelper;
 import com.framework.cloud.infrastructure.web.context.OpenContext;
 import com.framework.cloud.infrastructure.web.context.ServiceContext;

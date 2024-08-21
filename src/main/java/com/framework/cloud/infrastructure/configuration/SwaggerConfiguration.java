@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.configuration;
 
-import com.framework.cloud.domain.model.basic.ComHeaders;
+import com.framework.cloud.domain.core.ComHeaders;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;

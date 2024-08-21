@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.exception.error;
 
-import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.domain.core.ComCodes;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import com.framework.cloud.infrastructure.exception.constant.NotFoundCommonException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.framework.cloud.domain.model.basic;
+package com.framework.cloud.domain.core;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

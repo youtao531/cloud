@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.web.context;
 
-import com.framework.cloud.domain.model.basic.ComHeaders;
+import com.framework.cloud.domain.core.ComHeaders;
 import org.slf4j.MDC;
 
 import java.util.HashMap;

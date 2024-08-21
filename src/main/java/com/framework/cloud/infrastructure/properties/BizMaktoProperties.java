@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * 业务配置
  *
- * @author youtao531 2023/10/12 15:38
+ * @author youtao531 on 2023/10/12 15:38
  */
 @Data
 @Component

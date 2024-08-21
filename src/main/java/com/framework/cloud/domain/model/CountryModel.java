@@ -1,6 +1,6 @@
 package com.framework.cloud.domain.model;
 
-import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.domain.core.ComCodes;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +18,7 @@ import java.util.Locale;
 /**
  * Country Model
  *
- * @author youtao531 2023/6/30 15:22
+ * @author youtao531 on 2023/6/30 15:22
  */
 @Data
 @Builder

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * Seetaface6配置
  *
- * @author youtao531 2023/5/20 14:57
+ * @author youtao531 on 2023/5/20 14:57
  */
 @Data
 @Component

@@ -1,4 +1,4 @@
-package com.framework.cloud.domain.model.basic;
+package com.framework.cloud.domain.core;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * 结果封装
  *
- * @author Yt on 2022/9/20 16:49
+ * @author youtao531 on 2022/9/20 16:49
  */
 @Data
 public class ComResult<T> implements Serializable {

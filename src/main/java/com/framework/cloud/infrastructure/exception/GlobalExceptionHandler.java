@@ -1,8 +1,8 @@
 package com.framework.cloud.infrastructure.exception;
 
-import com.framework.cloud.domain.model.basic.ComCodes;
-import com.framework.cloud.domain.model.basic.ComResult;
-import com.framework.cloud.infrastructure.exception.constant.ComException;
+import com.framework.cloud.domain.core.ComCodes;
+import com.framework.cloud.domain.core.ComResult;
+import com.framework.cloud.infrastructure.exception.constant.CommonException;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -13,31 +13,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 /**
  * 全局异常处理器
  *
- * @author Yt on 2022/12/8 11:40
+ * @author youtao531 on 2022/12/8 11:40
  */
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    public static ComResult<Void> buildResponseBodyForThrowable(Object throwable) {
-        log.warn("全局Exception异常处理器 {}, e={}", throwable.getClass().getSimpleName(), throwable);
-        ComException comException = null;
-        if (throwable instanceof ComException) {
-            comException = (ComException) throwable;
-        }
-        if (null == comException) {
-            Throwable t = (Throwable) throwable;
-            comException = new ErrorException(ComCodes.BAD_REQUEST.getCode(), t.getMessage());
-        }
-
-        ComCodes codes = ComCodes.getEnum(comException.getCode());
-        String message = comException.getMessage();
-        return ComResult.fail(codes, message);
-    }
-
     @ResponseStatus(value = HttpStatus.OK)
-    @ExceptionHandler(value = ComException.class)
-    public ComResult<Void> handleComException(ComException exception) {
+    @ExceptionHandler(value = CommonException.class)
+    public ComResult<Void> handleComException(CommonException exception) {
         return buildResponseBodyForThrowable(exception);
     }
 
@@ -45,5 +29,21 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public ComResult<Void> handleException(Throwable throwable) {
         return buildResponseBodyForThrowable(throwable);
+    }
+
+    public static ComResult<Void> buildResponseBodyForThrowable(Object throwable) {
+        log.warn("全局Exception异常处理器 {}, e={}", throwable.getClass().getSimpleName(), throwable);
+        CommonException commonException = null;
+        if (throwable instanceof CommonException) {
+            commonException = (CommonException) throwable;
+        }
+        if (null == commonException) {
+            Throwable t = (Throwable) throwable;
+            commonException = new ErrorException(ComCodes.BAD_REQUEST.getCode(), t.getMessage());
+        }
+
+        ComCodes codes = ComCodes.getEnum(commonException.getCode());
+        String message = commonException.getMessage();
+        return ComResult.fail(codes, message);
     }
 }

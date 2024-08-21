@@ -1,7 +1,7 @@
 package com.framework.cloud.interfaces.web;
 
 import com.framework.cloud.application.FaceSimilarityService;
-import com.framework.cloud.domain.model.basic.ComResult;
+import com.framework.cloud.domain.core.ComResult;
 import com.framework.cloud.infrastructure.utils.MultipartFileHelper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -21,6 +21,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
+/**
+ * 人脸比对
+ *
+ * @author youtao531 on 2023/5/20 14:57
+ */
 @Slf4j
 @RestController
 @ApiSupport(order = 8)

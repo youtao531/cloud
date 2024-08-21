@@ -1,4 +1,4 @@
-package com.framework.cloud.domain.model.basic;
+package com.framework.cloud.domain.core;
 
 import org.dromara.hutool.core.array.ArrayUtil;
 import org.dromara.hutool.core.text.StrUtil;
@@ -12,7 +12,7 @@ import java.util.Locale;
 /**
  * 国际化消息
  *
- * @author Yt on 2022/12/10 17:40
+ * @author youtao531 on 2022/12/10 17:40
  */
 public class MessageSourceHelper {
 

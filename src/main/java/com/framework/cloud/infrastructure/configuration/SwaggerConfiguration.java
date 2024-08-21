@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.configuration;
 
-import com.framework.cloud.domain.model.basic.ComHeaders;
+import com.framework.cloud.domain.core.ComHeaders;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -29,7 +29,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * @author Yt on 2022/12/7 14:21
+ * 接口文档配置
+ *
+ * @author youtao531 on 2022/12/7 14:21
  */
 @Configuration
 public class SwaggerConfiguration {

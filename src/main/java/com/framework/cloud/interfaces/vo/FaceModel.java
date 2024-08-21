@@ -7,6 +7,8 @@ import lombok.ToString;
 
 /**
  * 单个人脸数据
+ *
+ * @author youtao531 on 2024/8/15 10:55
  */
 @Data
 @ToString

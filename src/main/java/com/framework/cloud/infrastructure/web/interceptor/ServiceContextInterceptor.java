@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.web.interceptor;
 
-import com.framework.cloud.domain.model.basic.ComHeaders;
+import com.framework.cloud.domain.core.ComHeaders;
 import com.framework.cloud.infrastructure.web.WebParamUtil;
 import com.framework.cloud.infrastructure.web.context.OpenContextImpl;
 import com.framework.cloud.infrastructure.web.context.ServiceContext;
@@ -22,7 +22,7 @@ import java.util.Map;
 /**
  * 进入的请求入口 拦截器
  *
- * @author youtao531 2023/4/26 14:52
+ * @author youtao531 on 2023/4/26 14:52
  */
 @Slf4j
 public class ServiceContextInterceptor implements HandlerInterceptor {

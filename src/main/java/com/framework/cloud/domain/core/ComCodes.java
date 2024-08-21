@@ -1,4 +1,4 @@
-package com.framework.cloud.domain.model.basic;
+package com.framework.cloud.domain.core;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import java.util.Objects;
  * <p>
  *      HTTP状态码统一响应为200，其他情况通过以下code返回具体的业务错误码
  * </p>
- * @author Yt on 2023/1/5 17:13
+ * @author youtao531 on 2023/1/5 17:13
  * @formatter:off
  */
 @Getter

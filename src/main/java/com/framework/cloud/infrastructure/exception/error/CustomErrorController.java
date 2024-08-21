@@ -1,8 +1,8 @@
 package com.framework.cloud.infrastructure.exception.error;
 
-import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.domain.core.ComCodes;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
-import com.framework.cloud.infrastructure.exception.constant.NotFoundException;
+import com.framework.cloud.infrastructure.exception.constant.NotFoundCommonException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * 修改 AbstractErrorController
  *
- * @author Yt on 2023/1/5 15:51
+ * @author youtao531 on 2023/1/5 15:51
  */
 @Slf4j
 @Controller
@@ -35,7 +35,7 @@ public class CustomErrorController extends AbstractErrorController {
         String path = (String) request.getAttribute("jakarta.servlet.error.request_uri");
         ComCodes codes = ComCodes.getEnum(code, ComCodes.BAD_REQUEST);
         if (ComCodes.NOT_FOUND == codes) {
-            return new NotFoundException(String.format(" '%s' ", path));
+            return new NotFoundCommonException(String.format(" '%s' ", path));
         } else {
             return new ErrorException(code, message);
         }

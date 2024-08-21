@@ -1,7 +1,7 @@
 package com.framework.cloud.interfaces.web;
 
 import com.framework.cloud.application.FaceRegisterService;
-import com.framework.cloud.domain.model.basic.ComResult;
+import com.framework.cloud.domain.core.ComResult;
 import com.framework.cloud.infrastructure.utils.MultipartFileHelper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -27,7 +27,7 @@ import java.util.Map;
  * 将底库人脸头像向量特征注册到内存中，项目重启后注册的人脸将失效
  * 可以将人脸向量特征保存到数据库，项目启动时加载到内存
  *
- * @author youtao531 2024/7/25 14:27
+ * @author youtao531 on 2024/7/25 14:27
  */
 @Slf4j
 @RestController

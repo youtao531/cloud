@@ -1,13 +1,13 @@
 package com.framework.cloud.infrastructure.web.context;
 
-import com.framework.cloud.domain.model.basic.ComHeaders;
+import com.framework.cloud.domain.core.ComHeaders;
 import org.slf4j.MDC;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author youtao531 2023/4/26 14:46
+ * @author youtao531 on 2023/4/26 14:46
  */
 public class OpenContextImpl implements OpenContext {
 

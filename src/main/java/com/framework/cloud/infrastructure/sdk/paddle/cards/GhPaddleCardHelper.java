@@ -1,7 +1,7 @@
 package com.framework.cloud.infrastructure.sdk.paddle.cards;
 
 import com.framework.cloud.domain.model.CardType;
-import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.domain.core.ComCodes;
 import com.framework.cloud.infrastructure.constant.KeywordsConstant;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import com.framework.cloud.infrastructure.sdk.paddle.PaddleCardHelper;
@@ -26,7 +26,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * @author youtao531 2023/10/14 16:09
+ * @author youtao531 on 2023/10/14 16:09
  */
 @Slf4j
 @Component(value = "ghPaddleCardHelper")

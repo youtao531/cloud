@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.utils;
 
-import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.domain.core.ComCodes;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import org.dromara.hutool.core.map.MapUtil;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,7 +10,7 @@ import java.util.Base64;
 import java.util.Map;
 
 /**
- * @author Lcc 2023/10/12 16:53
+ * @author youtao531 on 2024/8/15 10:55
  */
 public final class MultipartFileHelper {
 

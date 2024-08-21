@@ -1,7 +1,7 @@
 package com.framework.cloud.interfaces.web;
 
 import com.framework.cloud.application.FaceQualityService;
-import com.framework.cloud.domain.model.basic.ComResult;
+import com.framework.cloud.domain.core.ComResult;
 import com.framework.cloud.infrastructure.utils.MultipartFileHelper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -23,7 +23,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Map;
 
 /**
- * @author youtao531 2023/9/25 11:16
+ * 质量检测
+ *
+ * @author youtao531 on 2023/5/20 14:57
  */
 @Slf4j
 @RestController

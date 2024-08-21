@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author youtao531 2023/10/14 11:33
+ * @author youtao531 on 2023/10/14 11:33
  */
 @Data
 public class PaddleOCRResult implements Serializable {

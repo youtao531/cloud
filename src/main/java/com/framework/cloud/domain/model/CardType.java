@@ -1,6 +1,6 @@
 package com.framework.cloud.domain.model;
 
-import com.framework.cloud.domain.model.basic.ComCodes;
+import com.framework.cloud.domain.core.ComCodes;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import lombok.AllArgsConstructor;
 import org.springframework.lang.Nullable;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author youtao531 2023/10/14 15:27
+ * @author youtao531 on 2023/10/14 15:27
  */
 @AllArgsConstructor
 public enum CardType {

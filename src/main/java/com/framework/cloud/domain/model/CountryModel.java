@@ -25,20 +25,10 @@ import java.util.Locale;
 @Accessors(chain = true)
 public class CountryModel implements Serializable {
 
-    //"AQ" + "ATA"  //南极洲（南纬60度以南的领土）
-    //"BV" + "BVT"  //布韦岛（布韦托亚）
-    //"GS" + "SGS"  //南乔治亚岛和南桑威奇群岛
-    //"HM" + "HMD"  //赫德岛和麦克唐纳群岛
-    //"MV" + "MDV"  //马尔代夫共和国
-    //"TF" + "ATF"  //法属南部领地
     public static final List<String> excludeCountries = List.of("AQ", "BV", "GS", "HM", "MV", "TF");
-    /**
-     * 受支持的国家
-     */
+
     public static final List<String> allowedCountries = List.of("GH", "TZ");
-    /**
-     * 所有受支持的国家代码
-     */
+
     public static final List<String> allCountryCodes = Arrays.stream(Locale.getISOCountries())
             .filter(country -> !excludeCountries.contains(country))
             .sorted()

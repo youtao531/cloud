@@ -17,7 +17,7 @@
     </appender>
 
     <springProfile name="default,dev">
-        <logger name="com.makto" level="INFO"/>
+        <logger name="com.framework.cloud" level="INFO"/>
         <logger name="org.springframework.amqp" level="ERROR"/>
         <logger name="com.alibaba.nacos.client.naming" level="ERROR"/>
         <logger name="org.mybatis.spring.mapper.ClassPathMapperScanner" level="ERROR"/>
@@ -67,7 +67,7 @@
             <appender-ref ref="appender_file_warn"/>
         </appender>
 
-        <logger name="com.makto" level="${level}"/>
+        <logger name="com.framework.cloud" level="${level}"/>
         <logger name="org.springframework.amqp" level="ERROR"/>
         <logger name="com.alibaba.nacos.client.naming" level="ERROR"/>
         <logger name="org.mybatis.spring.mapper.ClassPathMapperScanner" level="ERROR"/>

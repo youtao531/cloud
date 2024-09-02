@@ -39,9 +39,7 @@ public class FaceSimilarityController {
     @PostMapping
     @ApiOperationSupport(order = 1)
     @Operation(summary = "相似检测", description = "相似检测")
-    @Parameters(value = {
-            @Parameter(name = "face1", description = "证件人脸照片", in = ParameterIn.QUERY),
-            @Parameter(name = "face2", description = "活体人脸照片", in = ParameterIn.QUERY)})
+    @Parameters(value = {@Parameter(name = "face1", description = "证件人脸照片", in = ParameterIn.QUERY), @Parameter(name = "face2", description = "活体人脸照片", in = ParameterIn.QUERY)})
     public ComResult<Float> faceRecognizer(MultipartFile face1, MultipartFile face2) {
         log.info("人脸相似检测 开始");
         Assert.notNull(face1, "上传人脸照片1不能为空");

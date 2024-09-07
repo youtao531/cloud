@@ -1,18 +1,14 @@
 package com.framework.cloud.infrastructure.configuration;
 
-import com.framework.cloud.domain.core.ComHeaders;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.media.StringSchema;
-import io.swagger.v3.oas.models.parameters.HeaderParameter;
 import io.swagger.v3.oas.models.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import org.dromara.hutool.core.collection.CollUtil;
-import org.dromara.hutool.core.collection.ListUtil;
 import org.dromara.hutool.core.map.MapUtil;
 import org.dromara.hutool.extra.spring.SpringUtil;
 import org.springdoc.core.customizers.GlobalOpenApiCustomizer;
@@ -106,55 +102,9 @@ public class SwaggerConfiguration {
         }
     }
 
-    /**
-     * 设置方法公共请求头
-     * <p>
-     * 为了接口文档的简便和可读性，隐藏这些请求头参数。对接的时候告知对接方规则。
-     * </p>
-     */
-    private static void setComHeaders(Operation operation) {
-        //公共请求头参数
-        HeaderParameter country = buildHeaderParameter(ComHeaders.COUNTRY_KEY, "国家代码，例如：TZ、GH、CI等", 0, 2, 2);
-        HeaderParameter timestamp = buildHeaderParameter(ComHeaders.TIME_KEY, "时间戳，13位毫秒值。例如：1653498543312", 2, 13, 13);
-        HeaderParameter nonce = buildHeaderParameter(ComHeaders.NONCE_KEY, "随机串，一次性的唯一字符串。例如：c83dd35612927090a14c754caae6af12", 3, 8, 64);
-        List<HeaderParameter> parameters = ListUtil.of(country, timestamp, nonce);
-        parameters.forEach(operation::addParametersItem);
-    }
-
-    /**
-     * 构建 公共请求头
-     *
-     * @param name        请求头名称
-     * @param description 描述
-     * @param xOrder      排序
-     * @param min         最小长度（小于0则不限制）
-     * @param max         最大长度（小于0则不限制）
-     * @return 公共请求头
-     */
-    private static HeaderParameter buildHeaderParameter(String name, String description, int xOrder, int min, int max) {
-        StringSchema schema = new StringSchema();
-        if (min >= 0) {
-            schema.minLength(min);
-        }
-        if (max >= 0) {
-            schema.maxLength(max);
-        }
-
-        HeaderParameter parameter = new HeaderParameter();
-        parameter.name(name);
-        parameter.description(description);
-        parameter.required(true);
-        parameter.schema(schema);
-        parameter.addExtension(X_ORDER_KEY, String.valueOf(xOrder));
-        return parameter;
-    }
-
     @Bean
     public GlobalOperationCustomizer globalOperationCustomizer() {
         return (operation, handlerMethod) -> {
-            //设置方法公共请求头
-            setComHeaders(operation);
-
             //方法上面的注解
             ApiOperationSupport apiOperationSupport = handlerMethod.getMethodAnnotation(ApiOperationSupport.class);
             int apiOperationOrder = null == apiOperationSupport ? 0 : apiOperationSupport.order();
@@ -172,17 +122,6 @@ public class SwaggerConfiguration {
         return openApi -> {
             //重命名分组名称
             renameGroup(openApi);
-
-            //            //方法排序（无效）
-            //            Paths apiPaths = openApi.getPaths();
-            //            apiPaths.forEach((name, item) -> {
-            //                List<Operation> operations = item.readOperations();
-            //                Map<PathItem.HttpMethod, Operation> httpMethodOperationMap = item.readOperationsMap();
-            //            });
-            //            TreeMap<String, PathItem> sort = MapUtil.sort(apiPaths);
-            //            Paths newPaths = new Paths();
-            //            newPaths.putAll(sort);
-            //            openApi.setPaths(newPaths);
 
             //排序控制器Tag
             sortTags(openApi);

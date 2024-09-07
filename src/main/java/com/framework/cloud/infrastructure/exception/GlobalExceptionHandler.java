@@ -32,7 +32,6 @@ public class GlobalExceptionHandler {
     }
 
     public static ComResult<Void> buildResponseBodyForThrowable(Object throwable) {
-        log.warn("全局Exception异常处理器 {}, e={}", throwable.getClass().getSimpleName(), throwable);
         CommonException commonException = null;
         if (throwable instanceof CommonException) {
             commonException = (CommonException) throwable;

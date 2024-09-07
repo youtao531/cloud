@@ -45,19 +45,19 @@ public class CiPaddleCardHelper implements PaddleCardHelper {
                 .map(String::toUpperCase)
                 .toList();
 
-        List<String> idFrontWords = KeywordsConstant.ghIdFrontWords();
+        List<String> idFrontWords = KeywordsConstant.ciIdFrontWords();
         boolean matched = blockTexts.stream().anyMatch(x -> idFrontWords.stream().anyMatch(x::contains));
         if (matched) {
             return CardType.ID_FRONT;
         }
 
-        List<String> idBackWords = KeywordsConstant.ghIdBackWords();
+        List<String> idBackWords = KeywordsConstant.ciIdBackWords();
         matched = blockTexts.stream().anyMatch(x -> idBackWords.stream().anyMatch(x::contains));
         if (matched) {
             return CardType.ID_BACK;
         }
 
-        List<String> voterFrontWords = KeywordsConstant.ghVoterFrontWords();
+        List<String> voterFrontWords = KeywordsConstant.ciVoterFrontWords();
         matched = blockTexts.stream().anyMatch(x -> voterFrontWords.stream().anyMatch(x::contains));
         if (matched) {
             return CardType.VOTER_FRONT;

@@ -133,7 +133,7 @@ public class KePaddleCardHelper implements PaddleCardHelper {
         //全名
         List<OcrBlock> names = blockList.stream()
                 .filter(x -> StrUtil.isNotBlank(x.getText()))
-                .filter(x -> StrUtil.containsAnyIgnoreCase(x.getText(), "SURNAME", "NOM", "FIRSTNAMES", "PRENOMS"))
+                .filter(x -> StrUtil.containsAnyIgnoreCase(x.getText(), "Given Names", "NOM", "FIRSTNAMES", "PRENOMS"))
                 .toList();
         if (CollUtil.isNotEmpty(names)) {
             List<OcrBlock> nameList = new ArrayList<>();
@@ -211,7 +211,7 @@ public class KePaddleCardHelper implements PaddleCardHelper {
         //性别
         blockList.stream()
                 .filter(x -> StrUtil.isNotBlank(x.getText()))
-                .filter(x -> StrUtil.equalsAnyIgnoreCase(x.getText(), "MALE", "FEMALE"))
+                .filter(x -> StrUtil.equalsAnyIgnoreCase(x.getText(), "Sex"))
                 .findFirst()
                 .ifPresent(block -> {
                     String text = block.getText().toUpperCase();
@@ -248,7 +248,7 @@ public class KePaddleCardHelper implements PaddleCardHelper {
         //全名
         List<OcrBlock> names = blockList.stream()
                 .filter(x -> StrUtil.isNotBlank(x.getText()))
-                .filter(x -> StrUtil.containsAnyIgnoreCase(x.getText(), "SURNAME", "OTHERNAMES"))
+                .filter(x -> StrUtil.containsAnyIgnoreCase(x.getText(), "Given Names", "OTHERNAMES"))
                 .toList();
         if (CollUtil.isNotEmpty(names)) {
             List<OcrBlock> nameList = new ArrayList<>();

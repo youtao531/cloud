@@ -1,7 +1,7 @@
 package com.framework.cloud.interfaces.web;
 
 import com.framework.cloud.application.FaceSimilarityService;
-import com.framework.cloud.domain.core.ComResult;
+import com.framework.cloud.domain.model.ComResult;
 import com.framework.cloud.infrastructure.utils.MultipartFileHelper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;

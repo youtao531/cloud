@@ -1,7 +1,7 @@
 package com.framework.cloud.infrastructure.exception;
 
-import com.framework.cloud.domain.core.ComCodes;
-import com.framework.cloud.domain.core.ComResult;
+import com.framework.cloud.domain.model.ComCodes;
+import com.framework.cloud.domain.model.ComResult;
 import com.framework.cloud.infrastructure.exception.constant.CommonException;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.sdk.paddle.cards;
 
-import com.framework.cloud.domain.core.ComCodes;
+import com.framework.cloud.domain.model.ComCodes;
 import com.framework.cloud.domain.model.CardType;
 import com.framework.cloud.infrastructure.constant.KeywordsConstant;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;

@@ -1,6 +1,5 @@
 package com.framework.cloud.domain.model;
 
-import com.framework.cloud.domain.core.ComCodes;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import lombok.Builder;
 import lombok.Data;

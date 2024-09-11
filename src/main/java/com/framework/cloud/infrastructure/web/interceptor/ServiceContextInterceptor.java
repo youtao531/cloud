@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.web.interceptor;
 
-import com.framework.cloud.domain.core.ComHeaders;
+import com.framework.cloud.domain.model.ComHeaders;
 import com.framework.cloud.infrastructure.web.WebParamUtil;
 import com.framework.cloud.infrastructure.web.context.OpenContextImpl;
 import com.framework.cloud.infrastructure.web.context.ServiceContext;

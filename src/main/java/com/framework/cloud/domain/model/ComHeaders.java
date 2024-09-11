@@ -1,4 +1,4 @@
-package com.framework.cloud.domain.core;
+package com.framework.cloud.domain.model;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.framework.cloud.domain.core;
+package com.framework.cloud.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

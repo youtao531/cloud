@@ -3,11 +3,12 @@ package com.seeta.proxy;
 import com.seeta.pool.FaceLandmarkerPool;
 import com.seeta.pool.SeetaConfSetting;
 import com.seeta.sdk.*;
-
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 人脸特征点检测器  有 5点和68点
  */
+@Slf4j
 public class FaceLandmarkerProxy {
 
     private FaceLandmarkerPool pool;
@@ -20,18 +21,15 @@ public class FaceLandmarkerProxy {
     }
 
     public SeetaPointF[] mark(SeetaImageData imageData, SeetaRect seetaRect) {
-
         FaceLandmarker faceLandmarker = null;
         SeetaPointF[] pointFS = null;
 
         try {
-
             faceLandmarker = pool.borrowObject();
             pointFS = new SeetaPointF[faceLandmarker.number()];
             faceLandmarker.mark(imageData, seetaRect, pointFS);
-
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             if (faceLandmarker != null) {
                 pool.returnObject(faceLandmarker);
@@ -52,7 +50,7 @@ public class FaceLandmarkerProxy {
             landmarkerMask.setMasks(masks);
             landmarkerMask.setSeetaPointFS(pointFS);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             if (faceLandmarker != null) {
                 pool.returnObject(faceLandmarker);
@@ -69,7 +67,7 @@ public class FaceLandmarkerProxy {
                 return faceLandmarker.number();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             if (faceLandmarker != null) {
                 pool.returnObject(faceLandmarker);
@@ -77,6 +75,4 @@ public class FaceLandmarkerProxy {
         }
         return 0;
     }
-
-
 }

@@ -5,7 +5,12 @@ import com.seeta.pool.SeetaConfSetting;
 import com.seeta.sdk.EyeStateDetector;
 import com.seeta.sdk.SeetaImageData;
 import com.seeta.sdk.SeetaPointF;
+import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 眼部追踪
+ */
+@Slf4j
 public class EyeStateDetectorProxy {
 
     private EyeStateDetectorPool pool;
@@ -18,17 +23,14 @@ public class EyeStateDetectorProxy {
     }
 
     public EyeStateDetector.EYE_STATE[] detect(SeetaImageData imageData, SeetaPointF[] points) {
-
         EyeStateDetector eyeStateDetector = null;
         EyeStateDetector.EYE_STATE[] states = null;
 
         try {
-
             eyeStateDetector = pool.borrowObject();
             states = eyeStateDetector.detect(imageData, points);
-
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             if (eyeStateDetector != null) {
                 pool.returnObject(eyeStateDetector);

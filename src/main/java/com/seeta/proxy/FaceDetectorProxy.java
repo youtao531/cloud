@@ -23,9 +23,7 @@ public class FaceDetectorProxy {
 
     public SeetaRect[] detect(SeetaImageData image) throws Exception {
         FaceDetector faceDetector = null;
-
         SeetaRect[] detect;
-
         try {
             faceDetector = faceDetectorPool.borrowObject();
             detect = faceDetector.Detect(image);
@@ -34,7 +32,6 @@ public class FaceDetectorProxy {
                 faceDetectorPool.returnObject(faceDetector);
             }
         }
-
         return detect;
     }
 

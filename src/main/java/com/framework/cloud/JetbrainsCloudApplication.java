@@ -30,7 +30,7 @@ import java.util.TimeZone;
 @EnableCaching
 @EnableScheduling
 @ServletComponentScan
-@SpringBootApplication(scanBasePackages = "com.framework.cloud")
+@SpringBootApplication(scanBasePackages = {"com.framework.cloud", "com.seeta"})
 public class JetbrainsCloudApplication implements ApplicationListener<ApplicationReadyEvent> {
 
     static {

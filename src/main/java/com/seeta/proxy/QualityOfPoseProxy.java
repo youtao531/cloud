@@ -6,10 +6,12 @@ import com.seeta.sdk.QualityOfPose;
 import com.seeta.sdk.SeetaImageData;
 import com.seeta.sdk.SeetaPointF;
 import com.seeta.sdk.SeetaRect;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class QualityOfPoseProxy {
 
-    private QualityOfPosePool pool;
+    private final QualityOfPosePool pool;
 
     public QualityOfPoseProxy() {
         pool = new QualityOfPosePool(new SeetaConfSetting());
@@ -29,7 +31,7 @@ public class QualityOfPoseProxy {
             check = qualityOfPose.check(imageData, face, landmarks, score);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             if (qualityOfPose != null) {
                 pool.returnObject(qualityOfPose);
@@ -37,6 +39,4 @@ public class QualityOfPoseProxy {
         }
         return check;
     }
-
-
 }

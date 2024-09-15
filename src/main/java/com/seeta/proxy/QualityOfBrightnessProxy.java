@@ -6,10 +6,14 @@ import com.seeta.sdk.QualityOfBrightness;
 import com.seeta.sdk.SeetaImageData;
 import com.seeta.sdk.SeetaPointF;
 import com.seeta.sdk.SeetaRect;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class QualityOfBrightnessProxy {
 
-    private QualityOfBrightnessPool pool;
+    private final QualityOfBrightnessPool pool;
 
     public QualityOfBrightnessProxy() {
         pool = new QualityOfBrightnessPool(new SeetaConfSetting());
@@ -21,30 +25,26 @@ public class QualityOfBrightnessProxy {
     }
 
     public BrightnessItem check(SeetaImageData imageData, SeetaRect face, SeetaPointF[] landmarks) {
-
         float[] score = new float[1];
         QualityOfBrightness.QualityLevel check = null;
-
         QualityOfBrightness qualityOfBrightness = null;
 
         try {
             qualityOfBrightness = pool.borrowObject();
-
             check = qualityOfBrightness.check(imageData, face, landmarks, score);
-
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             if (qualityOfBrightness != null) {
                 pool.returnObject(qualityOfBrightness);
             }
         }
         return new BrightnessItem(check, score[0]);
-
     }
 
-    public class BrightnessItem {
-
+    @Setter
+    @Getter
+    public static class BrightnessItem {
         private QualityOfBrightness.QualityLevel check;
         private float score;
 
@@ -52,22 +52,5 @@ public class QualityOfBrightnessProxy {
             this.check = check;
             this.score = score;
         }
-
-        public QualityOfBrightness.QualityLevel getCheck() {
-            return check;
-        }
-
-        public void setCheck(QualityOfBrightness.QualityLevel check) {
-            this.check = check;
-        }
-
-        public float getScore() {
-            return score;
-        }
-
-        public void setScore(float score) {
-            this.score = score;
-        }
     }
-
 }

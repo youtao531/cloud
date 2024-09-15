@@ -42,8 +42,6 @@ public class AgePredictorPool extends GenericObjectPool<AgePredictor> {
 
             /**
              * 验证对象是否可用
-             * @param pooledObject
-             * @return
              */
             @Override
             public boolean validateObject(PooledObject<AgePredictor> pooledObject) {
@@ -54,8 +52,6 @@ public class AgePredictorPool extends GenericObjectPool<AgePredictor> {
 
             /**
              *  激活一个对象，使其可用用
-             * @param pooledObject
-             * @throws Exception
              */
             @Override
             public void activateObject(PooledObject<AgePredictor> pooledObject) throws Exception {
@@ -65,8 +61,6 @@ public class AgePredictorPool extends GenericObjectPool<AgePredictor> {
 
             /**
              * 钝化一个对象,也可以理解为反初始化
-             * @param pooledObject
-             * @throws Exception
              */
             @Override
             public void passivateObject(PooledObject pooledObject) throws Exception {
@@ -74,5 +68,4 @@ public class AgePredictorPool extends GenericObjectPool<AgePredictor> {
             }
         }, config);
     }
-
 }

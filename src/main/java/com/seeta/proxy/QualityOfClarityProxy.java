@@ -6,11 +6,14 @@ import com.seeta.sdk.QualityOfClarity;
 import com.seeta.sdk.SeetaImageData;
 import com.seeta.sdk.SeetaPointF;
 import com.seeta.sdk.SeetaRect;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class QualityOfClarityProxy {
 
-    private QualityOfClarityPool pool;
-
+    private final QualityOfClarityPool pool;
 
     public QualityOfClarityProxy() {
         pool = new QualityOfClarityPool(new SeetaConfSetting());
@@ -20,30 +23,26 @@ public class QualityOfClarityProxy {
         pool = new QualityOfClarityPool(setting);
     }
 
-
     public ClarityItem check(SeetaImageData imageData, SeetaRect face, SeetaPointF[] landmarks) {
-
         float[] score = new float[1];
-
         QualityOfClarity qualityOfClarity = null;
         QualityOfClarity.QualityLevel check = null;
         try {
-
             qualityOfClarity = pool.borrowObject();
             check = qualityOfClarity.check(imageData, face, landmarks, score);
-
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             if (qualityOfClarity != null) {
                 pool.returnObject(qualityOfClarity);
             }
         }
-
         return new ClarityItem(check, score[0]);
     }
 
-    public class ClarityItem {
+    @Setter
+    @Getter
+    public static class ClarityItem {
         private QualityOfClarity.QualityLevel qualityLevel;
         private float score;
 
@@ -51,22 +50,5 @@ public class QualityOfClarityProxy {
             this.qualityLevel = qualityLevel;
             this.score = score;
         }
-
-        public QualityOfClarity.QualityLevel getQualityLevel() {
-            return qualityLevel;
-        }
-
-        public void setQualityLevel(QualityOfClarity.QualityLevel qualityLevel) {
-            this.qualityLevel = qualityLevel;
-        }
-
-        public float getScore() {
-            return score;
-        }
-
-        public void setScore(float score) {
-            this.score = score;
-        }
     }
-
 }

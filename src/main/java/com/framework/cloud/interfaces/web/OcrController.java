@@ -1,8 +1,8 @@
 package com.framework.cloud.interfaces.web;
 
 import com.framework.cloud.application.OcrService;
+import com.framework.cloud.domain.model.ComResult;
 import com.framework.cloud.domain.model.CountryModel;
-import com.framework.cloud.domain.core.ComResult;
 import com.framework.cloud.infrastructure.utils.MultipartFileHelper;
 import com.framework.cloud.infrastructure.web.context.OpenContext;
 import com.framework.cloud.infrastructure.web.context.ServiceContext;
@@ -41,8 +41,7 @@ public class OcrController {
     @PostMapping
     @ApiOperationSupport(order = 1)
     @Operation(summary = "照片文字提取", description = "飞桨OCR - 照片文字提取")
-    @Parameters(value = {
-            @Parameter(name = "image", description = "照片", in = ParameterIn.DEFAULT)})
+    @Parameters(value = {@Parameter(name = "image", description = "照片", in = ParameterIn.DEFAULT)})
     public ComResult<OcrVO> ocr(MultipartFile image) {
         log.info("照片文字提取 开始");
         Assert.notNull(image, "上传照片 不能为空");

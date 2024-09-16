@@ -1,7 +1,7 @@
 package com.framework.cloud.application.impl;
 
 import com.framework.cloud.application.*;
-import com.framework.cloud.domain.core.ComCodes;
+import com.framework.cloud.domain.model.ComCodes;
 import com.framework.cloud.domain.repository.RegisterFaceRepository;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import com.framework.cloud.interfaces.vo.FaceModel;

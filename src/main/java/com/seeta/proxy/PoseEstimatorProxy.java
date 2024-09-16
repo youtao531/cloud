@@ -5,13 +5,16 @@ import com.seeta.pool.SeetaConfSetting;
 import com.seeta.sdk.PoseEstimator;
 import com.seeta.sdk.SeetaImageData;
 import com.seeta.sdk.SeetaRect;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class PoseEstimatorProxy {
 
-    private PoseEstimatorPool pool;
+    private final PoseEstimatorPool pool;
 
     public PoseEstimatorProxy(SeetaConfSetting confSetting) {
-
         pool = new PoseEstimatorPool(confSetting);
     }
 
@@ -26,7 +29,7 @@ public class PoseEstimatorProxy {
             poseEstimator = pool.borrowObject();
             poseEstimator.Estimate(image, face, yaw, pitch, roll);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         } finally {
             if (poseEstimator != null) {
                 pool.returnObject(poseEstimator);
@@ -35,8 +38,9 @@ public class PoseEstimatorProxy {
         return new PoseItem(yaw[0], pitch[0], roll[0]);
     }
 
-
-    public class PoseItem {
+    @Setter
+    @Getter
+    public static class PoseItem {
         private float yaw;
         private float pitch;
         private float roll;
@@ -46,30 +50,5 @@ public class PoseEstimatorProxy {
             this.pitch = pitch;
             this.roll = roll;
         }
-
-        public float getYaw() {
-            return yaw;
-        }
-
-        public void setYaw(float yaw) {
-            this.yaw = yaw;
-        }
-
-        public float getPitch() {
-            return pitch;
-        }
-
-        public void setPitch(float pitch) {
-            this.pitch = pitch;
-        }
-
-        public float getRoll() {
-            return roll;
-        }
-
-        public void setRoll(float roll) {
-            this.roll = roll;
-        }
     }
-
 }

@@ -1,6 +1,6 @@
 package com.framework.cloud.infrastructure.exception.constant;
 
-import com.framework.cloud.domain.core.ComCodes;
+import com.framework.cloud.domain.model.ComCodes;
 import lombok.Getter;
 
 /**

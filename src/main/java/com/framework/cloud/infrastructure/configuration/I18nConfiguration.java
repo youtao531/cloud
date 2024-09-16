@@ -33,9 +33,6 @@ public class I18nConfiguration implements WebMvcConfigurer {
                 .order(2);
     }
 
-    /**
-     * 重要：Bean Name 只能为`localeResolver`
-     */
     @Bean
     public LocaleResolver localeResolver() {
         SessionLocaleResolver resolver = new SessionLocaleResolver();

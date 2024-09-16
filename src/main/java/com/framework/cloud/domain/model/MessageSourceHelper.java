@@ -1,4 +1,4 @@
-package com.framework.cloud.domain.core;
+package com.framework.cloud.domain.model;
 
 import org.dromara.hutool.core.array.ArrayUtil;
 import org.dromara.hutool.core.text.StrUtil;

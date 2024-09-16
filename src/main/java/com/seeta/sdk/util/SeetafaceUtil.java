@@ -17,56 +17,18 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * @author YaoCai Lin
- * @time 2020年6月18日 下午1:12:42
+ * @author youtao531
  */
 public class SeetafaceUtil {
 
     private static final int[] BGR_TYPE = {0, 1, 2};
-
-
-    /**
-     * 将Mat 转为SeetaImage
-     *
-     * @param bufferedImage 图片
-     * @return BGR属性
-     * @author YaoCai Lin
-     * @time 2023年3月18日 13:14:39
-     */
-//    public static SeetaImageData mat2SeetaImageData(Mat matrix) {
-//        int cols = matrix.cols();
-//        int rows = matrix.rows();
-//        int elemSize = (int) matrix.elemSize();
-//        byte[] data = new byte[cols * rows * elemSize];
-//        matrix.data().get(data);
-//        switch (matrix.channels()) {
-//            case 1:
-//                break;
-//            case 3:
-//                byte b;
-//                for (int i = 0; i < data.length; i = i + 3) {
-//                    b = data[i];
-//                    data[i] = data[i + 2];
-//                    data[i + 2] = b;
-//                }
-//                break;
-//            default:
-//                return null;
-//        }
-//        SeetaImageData seetaImageData = new SeetaImageData(cols, rows, matrix.channels());
-//        seetaImageData.data = data;
-//
-//        return seetaImageData;
-//    }
-
 
     /**
      * 将BufferedImage转为SeetaImage
      *
      * @param bufferedImage 图片
      * @return BGR属性
-     * @author YaoCai Lin
-     * @time 2020年6月18日 下午1:14:39
+     * @author youtao531
      */
     public static SeetaImageData toSeetaImageData(BufferedImage bufferedImage) {
         if (bufferedImage == null) {
@@ -85,8 +47,7 @@ public class SeetafaceUtil {
     /**
      * 图片转bgr字节数组
      *
-     * @author YaoCai Lin
-     * @time 2020年7月9日 下午2:28:42
+     * @author youtao531
      */
     private static byte[] getBgr(BufferedImage image) {
         byte[] matrixBGR;
@@ -94,14 +55,14 @@ public class SeetafaceUtil {
             matrixBGR = (byte[]) image.getData().getDataElements(0, 0, image.getWidth(), image.getHeight(), null);
         } else {
             // ARGB格式图像数据
-            int intrgb[] = image.getRGB(0, 0, image.getWidth(), image.getHeight(), null, 0, image.getWidth());
+            int[] integer = image.getRGB(0, 0, image.getWidth(), image.getHeight(), null, 0, image.getWidth());
             matrixBGR = new byte[image.getWidth() * image.getHeight() * 3];
-            int len = intrgb.length;
+            int len = integer.length;
             // ARGB转BGR格式
             for (int i = 0; i < len; i++) {
-                matrixBGR[i * 3] = (byte) (intrgb[i] & 0xff);
-                matrixBGR[i * 3 + 1] = (byte) ((intrgb[i] >> 8) & 0xff);
-                matrixBGR[i * 3 + 2] = (byte) ((intrgb[i] >> 16) & 0xff);
+                matrixBGR[i * 3] = (byte) (integer[i] & 0xff);
+                matrixBGR[i * 3 + 1] = (byte) ((integer[i] >> 8) & 0xff);
+                matrixBGR[i * 3 + 2] = (byte) ((integer[i] >> 16) & 0xff);
             }
         }
         return matrixBGR;
@@ -110,12 +71,10 @@ public class SeetafaceUtil {
     /**
      * 判断是否为bgr
      *
-     * @author YaoCai Lin
-     * @time 2020年7月9日 下午2:29:00
+     * @author youtao531
      */
     private static boolean isBgr(BufferedImage image) {
-        if (image.getType() == BufferedImage.TYPE_3BYTE_BGR && image.getData().getSampleModel() instanceof ComponentSampleModel) {
-            ComponentSampleModel sampleModel = (ComponentSampleModel) image.getData().getSampleModel();
+        if (image.getType() == BufferedImage.TYPE_3BYTE_BGR && image.getData().getSampleModel() instanceof ComponentSampleModel sampleModel) {
             return Arrays.equals(sampleModel.getBandOffsets(), BGR_TYPE);
         }
         return false;
@@ -125,8 +84,7 @@ public class SeetafaceUtil {
      * 转为seetaImageData
      *
      * @param path 路径
-     * @author YaoCai Lin
-     * @time 2020年6月19日 下午9:06:39
+     * @author youtao531
      */
     public static SeetaImageData toSeetaImageData(String path) {
         return toSeetaImageData(new File(path));
@@ -135,36 +93,21 @@ public class SeetafaceUtil {
     /**
      * 转为seetaImageData
      *
-     * @author YaoCai Lin
-     * @time 2020年6月19日 下午9:06:39
+     * @author youtao531
      */
     public static SeetaImageData toSeetaImageData(File file) {
         return toSeetaImageData(toBufferedImage(file));
     }
 
-    /**
-     * @param path
-     * @return
-     * @throws IOException
-     * @author YaoCai Lin
-     * @time 2020年7月9日 下午3:03:42
-     */
     public static BufferedImage toBufferedImage(String path) {
         return toBufferedImage(new File(path));
     }
 
-    /**
-     * @param file
-     * @return
-     * @throws IOException
-     * @author YaoCai Lin
-     * @time 2020年7月9日 下午3:03:42
-     */
     public static BufferedImage toBufferedImage(File file) {
         BufferedImage image = null;
         try {
             image = ImageIO.read(file);
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
         return image;
     }
@@ -176,18 +119,10 @@ public class SeetafaceUtil {
      * @param width  宽
      * @param height 高
      * @return 图片
-     * @author YaoCai Lin
-     * @time 2020年7月9日 下午2:30:02
+     * @author youtao531
      */
     public static BufferedImage toBufferedImage(byte[] data, int width, int height) {
         int type = BufferedImage.TYPE_3BYTE_BGR;
-        // bgr to rgb
-//        byte b;
-//        for (int i = 0; i < data.length; i = i + 3) {
-//            b = data[i];
-//            data[i] = data[i + 2];
-//            data[i + 2] = b;
-//        }
         BufferedImage image = new BufferedImage(width, height, type);
         image.getRaster().setDataElements(0, 0, width, height, data);
         return image;
@@ -199,11 +134,6 @@ public class SeetafaceUtil {
 
     /**
      * 实现图像的等比缩放
-     *
-     * @param source
-     * @param targetW
-     * @param targetH
-     * @return
      */
     public static BufferedImage resize(BufferedImage source, int targetW, int targetH) {
         // targetW，targetH分别表示目标长和宽
@@ -258,5 +188,4 @@ public class SeetafaceUtil {
         label.setIcon(icon);
         return frame;
     }
-
 }

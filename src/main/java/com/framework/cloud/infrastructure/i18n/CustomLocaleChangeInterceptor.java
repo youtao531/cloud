@@ -45,10 +45,6 @@ public class CustomLocaleChangeInterceptor extends LocaleChangeInterceptor {
                 if (!this.isIgnoreInvalidLocale()) {
                     throw var7;
                 }
-
-                if (this.logger.isDebugEnabled()) {
-                    this.logger.debug("Ignoring invalid locale value [" + newLocale + "]: " + var7.getMessage());
-                }
             }
         }
 

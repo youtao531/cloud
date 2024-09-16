@@ -1,7 +1,7 @@
 package com.framework.cloud.infrastructure.sdk.paddle.cards;
 
-import com.framework.cloud.domain.model.CardType;
 import com.framework.cloud.domain.model.ComCodes;
+import com.framework.cloud.domain.model.CardType;
 import com.framework.cloud.infrastructure.constant.KeywordsConstant;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import com.framework.cloud.infrastructure.sdk.paddle.PaddleCardHelper;
@@ -26,15 +26,15 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * @author youtao531 on 2023/10/14 16:09
+ * @author youtao531 on 2024/9/7 16:09
  */
 @Slf4j
-@Component(value = "ghPaddleCardHelper")
-public class GhPaddleCardHelper implements PaddleCardHelper {
+@Component(value = "ciPaddleCardHelper")
+public class CiPaddleCardHelper implements PaddleCardHelper {
 
     @Override
     public void init() {
-        PaddleCardHelper.set("GH", this);
+        PaddleCardHelper.set("CI", this);
     }
 
     @Override
@@ -45,19 +45,19 @@ public class GhPaddleCardHelper implements PaddleCardHelper {
                 .map(String::toUpperCase)
                 .toList();
 
-        List<String> idFrontWords = KeywordsConstant.ghIdFrontWords();
+        List<String> idFrontWords = KeywordsConstant.ciIdFrontWords();
         boolean matched = blockTexts.stream().anyMatch(x -> idFrontWords.stream().anyMatch(x::contains));
         if (matched) {
             return CardType.ID_FRONT;
         }
 
-        List<String> idBackWords = KeywordsConstant.ghIdBackWords();
+        List<String> idBackWords = KeywordsConstant.ciIdBackWords();
         matched = blockTexts.stream().anyMatch(x -> idBackWords.stream().anyMatch(x::contains));
         if (matched) {
             return CardType.ID_BACK;
         }
 
-        List<String> voterFrontWords = KeywordsConstant.ghVoterFrontWords();
+        List<String> voterFrontWords = KeywordsConstant.ciVoterFrontWords();
         matched = blockTexts.stream().anyMatch(x -> voterFrontWords.stream().anyMatch(x::contains));
         if (matched) {
             return CardType.VOTER_FRONT;

@@ -1,7 +1,7 @@
 package com.framework.cloud.infrastructure.sdk.paddle.cards;
 
-import com.framework.cloud.domain.model.CardType;
 import com.framework.cloud.domain.model.ComCodes;
+import com.framework.cloud.domain.model.CardType;
 import com.framework.cloud.infrastructure.constant.KeywordsConstant;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;
 import com.framework.cloud.infrastructure.sdk.paddle.PaddleCardHelper;
@@ -26,15 +26,15 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * @author youtao531 on 2023/10/14 16:09
+ * @author Lcc 2024/9/5 19:03
  */
 @Slf4j
-@Component(value = "ghPaddleCardHelper")
-public class GhPaddleCardHelper implements PaddleCardHelper {
+@Component(value = "kePaddleCardHelper")
+public class KePaddleCardHelper implements PaddleCardHelper {
 
     @Override
     public void init() {
-        PaddleCardHelper.set("GH", this);
+        PaddleCardHelper.set("KE", this);
     }
 
     @Override
@@ -45,19 +45,19 @@ public class GhPaddleCardHelper implements PaddleCardHelper {
                 .map(String::toUpperCase)
                 .toList();
 
-        List<String> idFrontWords = KeywordsConstant.ghIdFrontWords();
+        List<String> idFrontWords = KeywordsConstant.keIdFrontWords();
         boolean matched = blockTexts.stream().anyMatch(x -> idFrontWords.stream().anyMatch(x::contains));
         if (matched) {
             return CardType.ID_FRONT;
         }
 
-        List<String> idBackWords = KeywordsConstant.ghIdBackWords();
+        List<String> idBackWords = KeywordsConstant.keIdBackWords();
         matched = blockTexts.stream().anyMatch(x -> idBackWords.stream().anyMatch(x::contains));
         if (matched) {
             return CardType.ID_BACK;
         }
 
-        List<String> voterFrontWords = KeywordsConstant.ghVoterFrontWords();
+        List<String> voterFrontWords = KeywordsConstant.keVoterFrontWords();
         matched = blockTexts.stream().anyMatch(x -> voterFrontWords.stream().anyMatch(x::contains));
         if (matched) {
             return CardType.VOTER_FRONT;
@@ -85,7 +85,7 @@ public class GhPaddleCardHelper implements PaddleCardHelper {
         blockList.stream()
                 .filter(x -> StrUtil.isNotBlank(x.getText()))
                 .filter(x -> x.getText().length() == 15)
-                .filter(x -> x.getText().toUpperCase().startsWith("GHA"))
+                .filter(x -> x.getText().toUpperCase().startsWith("KENYA"))
                 .filter(x -> StrUtil.count(x.getText(), "-") == 2)
                 .findFirst()
                 .ifPresent(block -> {
@@ -133,7 +133,7 @@ public class GhPaddleCardHelper implements PaddleCardHelper {
         //全名
         List<OcrBlock> names = blockList.stream()
                 .filter(x -> StrUtil.isNotBlank(x.getText()))
-                .filter(x -> StrUtil.containsAnyIgnoreCase(x.getText(), "SURNAME", "NOM", "FIRSTNAMES", "PRENOMS"))
+                .filter(x -> StrUtil.containsAnyIgnoreCase(x.getText(), "Given Names", "NOM", "FIRSTNAMES", "PRENOMS"))
                 .toList();
         if (CollUtil.isNotEmpty(names)) {
             List<OcrBlock> nameList = new ArrayList<>();
@@ -178,7 +178,7 @@ public class GhPaddleCardHelper implements PaddleCardHelper {
         blockList.stream()
                 .filter(x -> StrUtil.isNotBlank(x.getText()))
                 .filter(x -> x.getText().length() == 15)
-                .filter(x -> x.getText().toUpperCase().startsWith("GHA"))
+                .filter(x -> x.getText().toUpperCase().startsWith("KENYA"))
                 .filter(x -> StrUtil.count(x.getText(), "-") == 2)
                 .findFirst()
                 .ifPresent(block -> {
@@ -211,7 +211,7 @@ public class GhPaddleCardHelper implements PaddleCardHelper {
         //性别
         blockList.stream()
                 .filter(x -> StrUtil.isNotBlank(x.getText()))
-                .filter(x -> StrUtil.equalsAnyIgnoreCase(x.getText(), "MALE", "FEMALE"))
+                .filter(x -> StrUtil.equalsAnyIgnoreCase(x.getText(), "Sex"))
                 .findFirst()
                 .ifPresent(block -> {
                     String text = block.getText().toUpperCase();
@@ -248,7 +248,7 @@ public class GhPaddleCardHelper implements PaddleCardHelper {
         //全名
         List<OcrBlock> names = blockList.stream()
                 .filter(x -> StrUtil.isNotBlank(x.getText()))
-                .filter(x -> StrUtil.containsAnyIgnoreCase(x.getText(), "SURNAME", "OTHERNAMES"))
+                .filter(x -> StrUtil.containsAnyIgnoreCase(x.getText(), "Given Names", "OTHERNAMES"))
                 .toList();
         if (CollUtil.isNotEmpty(names)) {
             List<OcrBlock> nameList = new ArrayList<>();

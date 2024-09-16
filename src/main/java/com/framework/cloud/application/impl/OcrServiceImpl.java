@@ -1,7 +1,7 @@
 package com.framework.cloud.application.impl;
 
 import com.framework.cloud.application.OcrService;
-import com.framework.cloud.domain.core.ComCodes;
+import com.framework.cloud.domain.model.ComCodes;
 import com.framework.cloud.domain.model.CardType;
 import com.framework.cloud.domain.model.CountryModel;
 import com.framework.cloud.infrastructure.exception.constant.ErrorException;

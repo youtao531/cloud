@@ -1,9 +1,15 @@
 server:
-  shutdown: graceful
+  port: ${SERVER_PORT:8080}
   max-http-request-header-size: 1MB
+  shutdown: graceful
+  servlet:
+    context-path: /
 spring:
   application:
     name: jetbrains-cloud
+  threads:
+    virtual:
+      enabled: true
   main:
     allow-circular-references: true
     allow-bean-definition-overriding: true
@@ -24,16 +30,15 @@ spring:
     always-use-message-format: false
     fallback-to-system-locale: true
 management:
+  server:
+    port: ${server.port}
   endpoints:
     web:
       exposure:
-        include: '*'
-    jmx:
-      exposure:
-        include: '*'
-  info:
-    build:
-      enabled: true
+        include: 'health,info'
+  endpoint:
+    shutdown:
+      enabled: off
 logging:
   config: classpath:logging/logback-spring.xml
   file:

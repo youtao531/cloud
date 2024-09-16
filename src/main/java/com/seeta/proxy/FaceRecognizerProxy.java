@@ -5,27 +5,24 @@ import com.seeta.pool.SeetaConfSetting;
 import com.seeta.sdk.FaceRecognizer;
 import com.seeta.sdk.SeetaImageData;
 import com.seeta.sdk.SeetaPointF;
-
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 人脸特征提取评估器
  */
+@Slf4j
 public class FaceRecognizerProxy {
 
     private FaceRecognizerPool pool;
 
-
     private FaceRecognizerProxy() {
     }
-
 
     public FaceRecognizerProxy(SeetaConfSetting config) {
         this.pool = new FaceRecognizerPool(config);
     }
 
-
     public float[] extract(SeetaImageData image, SeetaPointF[] points) {
-
         float[] features = null;
         FaceRecognizer faceRecognizer = null;
 
@@ -35,9 +32,8 @@ public class FaceRecognizerProxy {
             faceRecognizer.Extract(image, points, features);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
-
             if (faceRecognizer != null) {
                 pool.returnObject(faceRecognizer);
             }
@@ -47,7 +43,6 @@ public class FaceRecognizerProxy {
     }
 
     public int getExtractFeatureSize() {
-
         FaceRecognizer faceRecognizer = null;
 
         try {
@@ -56,7 +51,7 @@ public class FaceRecognizerProxy {
                 return faceRecognizer.GetExtractFeatureSize();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             if (faceRecognizer != null) {
                 pool.returnObject(faceRecognizer);
@@ -67,7 +62,6 @@ public class FaceRecognizerProxy {
     }
 
     public float calculateSimilarity(float[] features1, float[] features2) {
-
         float score = -1f;
         FaceRecognizer faceRecognizer = null;
 
@@ -76,7 +70,7 @@ public class FaceRecognizerProxy {
             score = faceRecognizer.CalculateSimilarity(features1, features2);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             if (faceRecognizer != null) {
                 pool.returnObject(faceRecognizer);

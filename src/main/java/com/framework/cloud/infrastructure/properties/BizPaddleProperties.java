@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-@ConfigurationProperties(prefix = "flexible.makto")
-public class BizMaktoProperties {
+@ConfigurationProperties(prefix = "flexible.paddle")
+public class BizPaddleProperties {
 
     /**
      * Paddle服务地址

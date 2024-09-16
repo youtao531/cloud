@@ -5,7 +5,11 @@ import com.seeta.pool.SeetaConfSetting;
 import com.seeta.sdk.GenderPredictor;
 import com.seeta.sdk.SeetaImageData;
 import com.seeta.sdk.SeetaPointF;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class GenderPredictorProxy {
 
     private GenderPredictorPool pool;
@@ -14,12 +18,10 @@ public class GenderPredictorProxy {
     }
 
     public GenderPredictorProxy(SeetaConfSetting confSetting) {
-
         pool = new GenderPredictorPool(confSetting);
     }
 
     public GenderItem predictGenderWithCrop(SeetaImageData image, SeetaPointF[] points) {
-
         GenderPredictor.GENDER[] gender = new GenderPredictor.GENDER[1];
         GenderPredictor genderPredictor = null;
         boolean result = false;
@@ -29,7 +31,7 @@ public class GenderPredictorProxy {
             result = genderPredictor.PredictGenderWithCrop(image, points, gender);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
 
             if (genderPredictor != null) {
@@ -40,7 +42,9 @@ public class GenderPredictorProxy {
         return new GenderItem(gender[0], result);
     }
 
-    public class GenderItem {
+    @Setter
+    @Getter
+    public static class GenderItem {
         private GenderPredictor.GENDER gender;
         private boolean result;
 
@@ -48,22 +52,5 @@ public class GenderPredictorProxy {
             this.gender = gender;
             this.result = result;
         }
-
-        public GenderPredictor.GENDER getGender() {
-            return gender;
-        }
-
-        public void setGender(GenderPredictor.GENDER gender) {
-            this.gender = gender;
-        }
-
-        public boolean isResult() {
-            return result;
-        }
-
-        public void setResult(boolean result) {
-            this.result = result;
-        }
     }
-
 }

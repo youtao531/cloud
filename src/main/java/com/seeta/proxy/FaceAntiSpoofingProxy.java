@@ -6,7 +6,12 @@ import com.seeta.sdk.FaceAntiSpoofing;
 import com.seeta.sdk.SeetaImageData;
 import com.seeta.sdk.SeetaPointF;
 import com.seeta.sdk.SeetaRect;
+import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 人脸反欺诈
+ */
+@Slf4j
 public class FaceAntiSpoofingProxy {
 
     private FaceAntiSpoofingPool pool;
@@ -28,7 +33,7 @@ public class FaceAntiSpoofingProxy {
             status = faceAntiSpoofing.Predict(image, face, landmarks);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             if (faceAntiSpoofing != null) {
                 pool.returnObject(faceAntiSpoofing);

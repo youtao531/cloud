@@ -44,4 +44,28 @@ public class KeywordsConstant {
     public static List<String> ghVoterFrontWords() {
         return Arrays.stream(KeywordsConstant.ghVoterFrontWords.split("\\|")).toList();
     }
+
+    public static List<String> keIdFrontWords() {
+        return Arrays.stream(KeywordsConstant.ghIdFrontWords.split("\\|")).toList();
+    }
+
+    public static List<String> keIdBackWords() {
+        return Arrays.stream(KeywordsConstant.ghIdBackWords.split("\\|")).toList();
+    }
+
+    public static List<String> keVoterFrontWords() {
+        return Arrays.stream(KeywordsConstant.ghVoterFrontWords.split("\\|")).toList();
+    }
+
+    public static List<String> ciIdFrontWords() {
+        return Arrays.stream(KeywordsConstant.ghIdFrontWords.split("\\|")).toList();
+    }
+
+    public static List<String> ciIdBackWords() {
+        return Arrays.stream(KeywordsConstant.ghIdBackWords.split("\\|")).toList();
+    }
+
+    public static List<String> ciVoterFrontWords() {
+        return Arrays.stream(KeywordsConstant.ghVoterFrontWords.split("\\|")).toList();
+    }
 }

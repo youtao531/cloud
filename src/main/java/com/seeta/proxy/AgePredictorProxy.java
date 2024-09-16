@@ -5,11 +5,12 @@ import com.seeta.pool.SeetaConfSetting;
 import com.seeta.sdk.AgePredictor;
 import com.seeta.sdk.SeetaImageData;
 import com.seeta.sdk.SeetaPointF;
-
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 年龄评估器
  */
+@Slf4j
 public class AgePredictorProxy {
 
     private AgePredictorPool pool;
@@ -32,7 +33,7 @@ public class AgePredictorProxy {
             agePredictor = pool.borrowObject();
             agePredictor.PredictAgeWithCrop(image, points, age);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         } finally {
             if (agePredictor != null) {
                 pool.returnObject(agePredictor);

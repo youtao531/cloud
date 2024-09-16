@@ -5,7 +5,11 @@ import com.seeta.pool.SeetaConfSetting;
 import com.seeta.sdk.QualityOfLBN;
 import com.seeta.sdk.SeetaImageData;
 import com.seeta.sdk.SeetaPointF;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class QualityOfLBNProxy {
 
     private QualityOfLBNPool pool;
@@ -17,7 +21,6 @@ public class QualityOfLBNProxy {
         pool = new QualityOfLBNPool(setting);
     }
 
-
     public LBNClass detect(SeetaImageData imageData, SeetaPointF[] points) {
         int[] light = new int[1];
         int[] blur = new int[1];
@@ -28,7 +31,7 @@ public class QualityOfLBNProxy {
             qualityOfLBN = pool.borrowObject();
             qualityOfLBN.Detect(imageData, points, light, blur, noise);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         } finally {
             if (qualityOfLBN != null) {
                 pool.returnObject(qualityOfLBN);
@@ -38,8 +41,9 @@ public class QualityOfLBNProxy {
         return new LBNClass(light, blur, noise);
     }
 
-    public class LBNClass {
-
+    @Getter
+    @Setter
+    public static class LBNClass {
         private QualityOfLBN.LIGHTSTATE lightstate;
         private QualityOfLBN.BLURSTATE blurstate;
         private QualityOfLBN.NOISESTATE noisestate;
@@ -49,30 +53,5 @@ public class QualityOfLBNProxy {
             this.blurstate = QualityOfLBN.BLURSTATE.values()[blur[0]];
             this.noisestate = QualityOfLBN.NOISESTATE.values()[noise[0]];
         }
-
-        public QualityOfLBN.LIGHTSTATE getLightstate() {
-            return lightstate;
-        }
-
-        public void setLightstate(QualityOfLBN.LIGHTSTATE lightstate) {
-            this.lightstate = lightstate;
-        }
-
-        public QualityOfLBN.BLURSTATE getBlurstate() {
-            return blurstate;
-        }
-
-        public void setBlurstate(QualityOfLBN.BLURSTATE blurstate) {
-            this.blurstate = blurstate;
-        }
-
-        public QualityOfLBN.NOISESTATE getNoisestate() {
-            return noisestate;
-        }
-
-        public void setNoisestate(QualityOfLBN.NOISESTATE noisestate) {
-            this.noisestate = noisestate;
-        }
     }
-
 }

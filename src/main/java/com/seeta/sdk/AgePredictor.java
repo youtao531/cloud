@@ -3,7 +3,7 @@ package com.seeta.sdk;
 /**
  * 年龄估计器
  *
- * @author YaoCai Lin
+ * @author youtao531
  */
 public class AgePredictor {
 //    static{

@@ -4,7 +4,7 @@ package com.seeta.sdk;
 /**
  * 活体识别
  *
- * @author YaoCai Lin
+ * @author youtao531
  */
 public class FaceAntiSpoofing {
 //	static{

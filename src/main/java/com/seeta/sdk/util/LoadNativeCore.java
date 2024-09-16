@@ -1,20 +1,21 @@
 package com.seeta.sdk.util;
 
 import com.seeta.sdk.SeetaDevice;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
  * 动态加载dll
  *
- * @author YaoCai Lin
+ * @author youtao531
  */
+@Slf4j
 public class LoadNativeCore {
 
     public static final String SEETAFACE6 = "seetaface6";
@@ -22,22 +23,12 @@ public class LoadNativeCore {
      * 定义dll 路径和加载顺序的文件
      */
     private static final String PROPERTIES_FILE_NAME = "dll.properties";
-    private static Logger logger = Logger.getLogger(LoadNativeCore.class.getName());
     /**
      * 是否加载过
      */
     private static volatile boolean isLoaded = false;
 
-    public static void main(String[] args) {
-        LOAD_NATIVE(SeetaDevice.SEETA_DEVICE_AUTO);
-
-//        System.out.println(getPrefix());
-//        System.out.println(getPropertiesPath());
-
-    }
-
     public static synchronized void LOAD_NATIVE(SeetaDevice seetaDevice) {
-
         if (!isLoaded) {
             String device = getDevice(seetaDevice);
             InputStream var1 = LoadNativeCore.class.getResourceAsStream(getPropertiesPath());
@@ -47,9 +38,7 @@ public class LoadNativeCore {
                 List<DllItem> baseList = new ArrayList<>();
                 List<DllItem> jniList = new ArrayList<>();
 
-                Iterator<Map.Entry<Object, Object>> iterator = properties.entrySet().iterator();
-                while (iterator.hasNext()) {
-                    Map.Entry<Object, Object> entry = iterator.next();
+                for (Map.Entry<Object, Object> entry : properties.entrySet()) {
                     String key = (String) entry.getKey();
                     String value = (String) entry.getValue();
                     DllItem dllItem = new DllItem();
@@ -67,17 +56,13 @@ public class LoadNativeCore {
                     }
                 }
 
-                /**
-                 * 将文件分类
-                 */
+                //将文件分类
                 List<String> basePath = getSortedPath(baseList);
                 List<String> sdkPath = getSortedPath(jniList);
 
                 List<File> fileList = new ArrayList<>();
 
-                /**
-                 * 拷贝文件到临时目录
-                 */
+                //拷贝文件到临时目录
                 for (String b : basePath) {
                     fileList.add(copyDLL(b));
                 }
@@ -88,12 +73,12 @@ public class LoadNativeCore {
                 // 加载 dll文件
                 fileList.forEach(file -> {
                     System.load(file.getAbsolutePath());
-                    logger.info(String.format("load %s finish", file.getAbsolutePath()));
+                    log.info("load {} finish", file.getAbsolutePath());
                 });
-                logger.info("............END !");
+                log.info("............END !");
 
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error(e.getMessage(), e);
             }
             isLoaded = true;
         }
@@ -136,8 +121,6 @@ public class LoadNativeCore {
 
     /**
      * 返回路径文件前缀
-     *
-     * @return
      */
     private static String getPrefix() {
         String arch = getArch();
@@ -162,31 +145,34 @@ public class LoadNativeCore {
     /**
      * 将获得的配置进行排序 并生成路径
      *
-     * @param list
+     * @param list dll文件
      * @return List<String>
      */
     private static List<String> getSortedPath(List<DllItem> list) {
-        List<String> sortedPath = list.stream().sorted(Comparator.comparing(dllItem -> {
-            int i = dllItem.getKey().lastIndexOf(".") + 1;
-            String substring = dllItem.getKey().substring(i);
-            return Integer.valueOf(substring);
-        })).map(dllItem -> dllItem.getValue()).collect(Collectors.toList());
-        return sortedPath;
+        return list.stream()
+                .sorted(Comparator.comparing(dllItem -> {
+                    int i = dllItem.getKey().lastIndexOf(".") + 1;
+                    String substring = dllItem.getKey().substring(i);
+                    return Integer.valueOf(substring);
+                }))
+                .map(DllItem::getValue).collect(Collectors.toList());
     }
 
     /**
      * 复制 resource 中的dll文件到临时目录
      *
-     * @param path
-     * @return
-     * @throws IOException
+     * @param path 路径
+     * @return dll文件
+     * @throws IOException 抛出异常
      */
     private static File copyDLL(String path) throws IOException {
         String nativeTempDir = System.getProperty("java.io.tmpdir");
         File extractedLibFile = new File(nativeTempDir + File.separator + path);
-        mkdirs(extractedLibFile.getParent());
+        mkdir(extractedLibFile.getParent());
         InputStream in = LoadNativeCore.class.getResourceAsStream(path);
-        writeToLocalTemp(extractedLibFile.getAbsolutePath(), in);
+        if (in != null) {
+            writeToLocalTemp(extractedLibFile.getAbsolutePath(), in);
+        }
 
         return extractedLibFile;
     }
@@ -216,18 +202,19 @@ public class LoadNativeCore {
     /**
      * 创建父级目录
      *
-     * @param path
+     * @param path 路径
      */
-    private static void mkdirs(String path) {
+    private static void mkdir(String path) {
         //变量不需赋初始值，赋值后永远不会读取变量，在下一个变量读取之前，该值总是被另一个赋值覆盖
         File f;
         try {
             f = new File(path);
             if (!f.exists()) {
-                f.mkdirs();
+                boolean flag = f.mkdirs();
+                log.info("{}", flag);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

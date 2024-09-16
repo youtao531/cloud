@@ -4,7 +4,7 @@ package com.seeta.sdk;
 /**
  * 人脸检测器 检测到的每个人脸位置，用矩形表示。
  *
- * @author YaoCai Lin
+ * @author youtao531
  */
 public class FaceDetector {
 //    static {

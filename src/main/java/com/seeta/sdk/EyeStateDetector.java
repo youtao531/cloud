@@ -3,7 +3,7 @@ package com.seeta.sdk;
 /**
  * 眼睛状态估计器
  *
- * @author YaoCai Lin
+ * @author youtao531
  */
 public class EyeStateDetector {
 //    static{

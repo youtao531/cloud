@@ -17,6 +17,4 @@ public class SeetaImageData {
     public SeetaImageData(int width, int height) {
         this(width, height, 1);
     }
-
-
 }

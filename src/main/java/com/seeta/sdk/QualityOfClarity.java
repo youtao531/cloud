@@ -4,9 +4,6 @@ package com.seeta.sdk;
  * 非深度学习的人脸清晰度评估器
  */
 public class QualityOfClarity {
-//    static {
-//        System.loadLibrary("QualityAssessor300_java");
-//    }
 
     public long impl = 0;
 
@@ -18,9 +15,6 @@ public class QualityOfClarity {
      * low	float		分级参数一
      * high	float		分级参数二
      * 说明：分类依据为[0, low)=> LOW; [low, high)=> MEDIUM; [high, ~)=> HIGH.
-     *
-     * @param low
-     * @param high
      */
     public QualityOfClarity(float low, float high) {
         this.construct(low, high);
@@ -39,11 +33,6 @@ public class QualityOfClarity {
 
     public native void dispose();
 
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
-
     /**
      * @param imageData [input]image data
      * @param face      [input] face location
@@ -56,8 +45,7 @@ public class QualityOfClarity {
     public QualityLevel check(SeetaImageData imageData, SeetaRect face, SeetaPointF[] landmarks, float[] score) {
         int index = this.checkCore(imageData, face, landmarks, score);
 
-        QualityLevel level = QualityLevel.values()[index];
-        return level;
+        return QualityLevel.values()[index];
     }
 
     public enum QualityLevel {

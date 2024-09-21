@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 
 public class SeetaModelSetting {
 
-    public final int id;     // when device is GPU, id means GPU id
+    // when device is GPU, id means GPU id
+    public final int id;
     public final String[] model;
     public final SeetaDevice device;
 

@@ -4,9 +4,6 @@ package com.seeta.sdk;
  * 非深度学习的人脸姿态评估器
  */
 public class QualityOfPose {
-//    static {
-//        System.loadLibrary("QualityAssessor300_java");
-//    }
 
     public long impl = 0;
 
@@ -17,11 +14,6 @@ public class QualityOfPose {
     private native void construct();
 
     public native void dispose();
-
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
 
     /**
      * @param imageData [input]image data
@@ -42,8 +34,7 @@ public class QualityOfPose {
     public QualityLevel check(SeetaImageData imageData, SeetaRect face, SeetaPointF[] landmarks, float[] score) {
         int index = this.checkCore(imageData, face, landmarks, score);
 
-        QualityLevel level = QualityLevel.values()[index];
-        return level;
+        return QualityLevel.values()[index];
     }
 
     public enum QualityLevel {

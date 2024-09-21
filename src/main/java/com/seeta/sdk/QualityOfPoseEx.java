@@ -1,12 +1,11 @@
 package com.seeta.sdk;
 
+import lombok.Getter;
+
 /**
  * 深度学习的人脸姿态评估器。
  */
 public class QualityOfPoseEx {
-//    static {
-//        System.loadLibrary("QualityAssessor300_java");
-//    }
 
     public long impl = 0;
 
@@ -14,7 +13,6 @@ public class QualityOfPoseEx {
      * 人脸姿态评估器构造函数。
      *
      * @param setting setting
-     * @throws Exception
      */
     public QualityOfPoseEx(SeetaModelSetting setting) throws Exception {
         this.construct(setting);
@@ -22,18 +20,8 @@ public class QualityOfPoseEx {
 
     /**
      * 人脸姿态评估器构造函数
-     *
-     * @param setting
-     * @throws Exception
      */
     private native void construct(SeetaModelSetting setting) throws Exception;
-
-    public native void dispose();
-
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
 
     /**
      * 检测人脸姿态
@@ -48,18 +36,11 @@ public class QualityOfPoseEx {
 
     /**
      * 检测人脸姿态
-     *
-     * @param imageData
-     * @param face
-     * @param landmarks
-     * @param score
-     * @return
      */
     public QualityLevel check(SeetaImageData imageData, SeetaRect face, SeetaPointF[] landmarks, float[] score) {
         int index = this.checkCore(imageData, face, landmarks, score);
 
-        QualityLevel level = QualityLevel.values()[index];
-        return level;
+        return QualityLevel.values()[index];
     }
 
     /**
@@ -77,12 +58,9 @@ public class QualityOfPoseEx {
     /**
      * 检测人脸姿态
      *
-     * @param imageData
-     * @param face
-     * @param landmarks
-     * @param yaw       偏航中的面部位置
-     * @param pitch     俯仰中的面部位置
-     * @param roll      面卷中的位置
+     * @param yaw   偏航中的面部位置
+     * @param pitch 俯仰中的面部位置
+     * @param roll  面卷中的位置
      */
     public void check(SeetaImageData imageData, SeetaRect face, SeetaPointF[] landmarks, float[] yaw, float[] pitch, float[] roll) {
         this.checkCore(imageData, face, landmarks, yaw, pitch, roll);
@@ -98,6 +76,7 @@ public class QualityOfPoseEx {
         HIGH,//Quality level is high
     }
 
+    @Getter
     public enum Property {
         YAW_LOW_THRESHOLD(0),
         YAW_HIGH_THRESHOLD(1),
@@ -106,14 +85,10 @@ public class QualityOfPoseEx {
         ROLL_LOW_THRESHOLD(4),
         ROLL_HIGH_THRESHOLD(5);
 
-        private int value;
+        private final int value;
 
-        private Property(int value) {
+        Property(int value) {
             this.value = value;
-        }
-
-        public int getValue() {
-            return value;
         }
     }
 }

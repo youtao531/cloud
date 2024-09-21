@@ -5,9 +5,6 @@ package com.seeta.sdk;
  * 应该是连接数据库用的，做小规模对比搜索
  */
 public class FaceDatabase {
-//    static {
-//        System.loadLibrary("SeetaFaceRecognizer600_java");
-//    }
 
     public long impl = 0;
 
@@ -34,11 +31,6 @@ public class FaceDatabase {
     private native void construct(SeetaModelSetting setting, int extractionCoreNumber, int comparationCoreNumber);
 
     public native void dispose();
-
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
 
     public native float Compare(SeetaImageData image1, SeetaPointF[] points1,
                                 SeetaImageData image2, SeetaPointF[] points2);

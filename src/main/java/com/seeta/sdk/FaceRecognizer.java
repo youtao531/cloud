@@ -1,18 +1,11 @@
 package com.seeta.sdk;
 
-
-//import com.seeta.SeetaModelSetting;
-
+import lombok.Getter;
 
 /**
  * 人脸识别器
  */
 public class FaceRecognizer {
-
-//    static {
-//        System.loadLibrary("SeetaFaceRecognizer600_java");
-//    }
-
 
     public long impl = 0;
 
@@ -30,15 +23,7 @@ public class FaceRecognizer {
 
     public native void dispose();
 
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
-
     public native int GetCropFaceWidthV2();
-
-    //public static native int SetLogLevel(int level);
-    //public static native void SetSingleCalculationThreads(int num);
 
     public native int GetCropFaceHeightV2();
 
@@ -58,18 +43,15 @@ public class FaceRecognizer {
 
     public native double get(Property property);
 
+    @Getter
     public enum Property {
         PROPERTY_NUMBER_THREADS(4),
         PROPERTY_ARM_CPU_MODE(5);
 
-        private int value;
+        private final int value;
 
-        private Property(int value) {
+        Property(int value) {
             this.value = value;
-        }
-
-        public int getValue() {
-            return value;
         }
     }
 }

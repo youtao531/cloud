@@ -33,11 +33,6 @@ public class QualityOfBrightness {
 
     public native void dispose();
 
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
-
     /**
      * @param imageData [input]image data
      * @param face      [input] face location
@@ -50,8 +45,7 @@ public class QualityOfBrightness {
     public QualityLevel check(SeetaImageData imageData, SeetaRect face, SeetaPointF[] landmarks, float[] score) {
         int index = this.checkCore(imageData, face, landmarks, score);
 
-        QualityLevel level = QualityLevel.values()[index];
-        return level;
+        return QualityLevel.values()[index];
     }
 
     public enum QualityLevel {

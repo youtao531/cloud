@@ -5,9 +5,6 @@ package com.seeta.sdk;
  * 人脸特征点检测器
  */
 public class FaceLandmarker {
-//    static{
-//        System.loadLibrary("SeetaFaceLandmarker600_java");
-//    }
 
     public long impl = 0;
 
@@ -19,16 +16,11 @@ public class FaceLandmarker {
         this.construct(model, device, id);
     }
 
-    private native void construct(SeetaModelSetting seeting);
+    private native void construct(SeetaModelSetting setting);
 
     private native void construct(String model, String device, int id);
 
     public native void dispose();
-
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
 
     public native int number();
 

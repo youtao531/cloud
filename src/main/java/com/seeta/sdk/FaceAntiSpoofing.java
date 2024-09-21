@@ -7,9 +7,6 @@ package com.seeta.sdk;
  * @author youtao531
  */
 public class FaceAntiSpoofing {
-//	static{
-//		System.loadLibrary("FaceAntiSpoofing600_java");
-//	}
 
     public long impl = 0;
 
@@ -32,11 +29,6 @@ public class FaceAntiSpoofing {
     private native void construct(String model1, String model2, String device, int id);
 
     public native void dispose();
-
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
 
     private native int PredictCore(SeetaImageData image, SeetaRect face, SeetaPointF[] landmarks);
 
@@ -70,5 +62,4 @@ public class FaceAntiSpoofing {
         FUZZY,        //< 无法判断（人脸成像质量不好）
         DETECTING,    //< 正在检测
     }
-
 }

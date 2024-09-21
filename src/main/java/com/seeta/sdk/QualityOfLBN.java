@@ -1,13 +1,12 @@
 package com.seeta.sdk;
 
+import lombok.Getter;
+
 /**
  * 深度学习的人脸清晰度评估器
  * 这个识别器不怎么好
  */
 public class QualityOfLBN {
-//    static {
-//        System.loadLibrary("QualityAssessor300_java");
-//    }
 
     public long impl = 0;
 
@@ -18,11 +17,6 @@ public class QualityOfLBN {
     private native void construct(SeetaModelSetting setting) throws Exception;
 
     public native void dispose();
-
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
 
     /**
      * @param imageData [input] image data
@@ -52,6 +46,7 @@ public class QualityOfLBN {
         NONOISE
     }
 
+    @Getter
     public enum Property {
         PROPERTY_NUMBER_THREADS(4),
         PROPERTY_ARM_CPU_MODE(5),
@@ -59,14 +54,10 @@ public class QualityOfLBN {
         PROPERTY_BLUR_THRESH(11),
         PROPERTY_NOISE_THRESH(12);
 
-        private int value;
+        private final int value;
 
-        private Property(int value) {
+        Property(int value) {
             this.value = value;
-        }
-
-        public int getValue() {
-            return value;
         }
     }
 }

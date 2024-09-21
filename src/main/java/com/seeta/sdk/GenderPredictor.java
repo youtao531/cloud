@@ -1,13 +1,12 @@
 package com.seeta.sdk;
 
 
+import lombok.Getter;
+
 /**
  * 性别估计器
  */
 public class GenderPredictor {
-//    static{
-//        System.loadLibrary("SeetaGenderPredictor600_java");
-//    }
 
     public long impl = 0;
 
@@ -18,11 +17,6 @@ public class GenderPredictor {
     private native void construct(SeetaModelSetting setting);
 
     public native void dispose();
-
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
 
     public native int GetCropFaceWidth();
 
@@ -60,18 +54,15 @@ public class GenderPredictor {
 
     public native double get(Property property);
 
+    @Getter
     public enum Property {
         PROPERTY_NUMBER_THREADS(4),
         PROPERTY_ARM_CPU_MODE(5);
 
-        private int value;
+        private final int value;
 
-        private Property(int value) {
+        Property(int value) {
             this.value = value;
-        }
-
-        public int getValue() {
-            return value;
         }
     }
 

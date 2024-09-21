@@ -1,14 +1,13 @@
 package com.seeta.sdk;
 
+import lombok.Getter;
+
 /**
  * 年龄估计器
  *
  * @author youtao531
  */
 public class AgePredictor {
-//    static{
-//        System.loadLibrary("SeetaAgePredictor600_java");
-//    }
 
     public long impl = 0;
 
@@ -19,11 +18,6 @@ public class AgePredictor {
     private native void construct(SeetaModelSetting setting);
 
     public native void dispose();
-
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
 
     public native int GetCropFaceWidth();
 
@@ -48,28 +42,22 @@ public class AgePredictor {
         int[] ages = new int[1];
         this.PredictAgeWithCrop(image, points, ages);
 
-        if (ages != null && ages.length >= 1) {
-            return ages[0];
-        }
-        return null;
+        return ages[0];
     }
 
     public native void set(Property property, double value);
 
     public native double get(Property property);
 
+    @Getter
     public enum Property {
         PROPERTY_NUMBER_THREADS(4),
         PROPERTY_ARM_CPU_MODE(5);
 
-        private int value;
+        private final int value;
 
-        private Property(int value) {
+        Property(int value) {
             this.value = value;
-        }
-
-        public int getValue() {
-            return value;
         }
     }
 }

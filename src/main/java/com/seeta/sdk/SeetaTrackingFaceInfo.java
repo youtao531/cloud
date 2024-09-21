@@ -9,7 +9,6 @@ public class SeetaTrackingFaceInfo {
     public int frame_no;
     public int PID;
 
-
     @Override
     public String toString() {
         return "SeetaTrackingFaceInfo{" +

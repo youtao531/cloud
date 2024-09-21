@@ -37,19 +37,10 @@ public class QualityOfResolution {
 
     public native void dispose();
 
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
-
-
     /**
      * 评估人脸尺寸
      *
-     * @param imageData
-     * @param face
-     * @param landmarks
-     * @param score     [output] quality score
+     * @param score [output] quality score
      * @return int
      */
     private native int checkCore(SeetaImageData imageData, SeetaRect face, SeetaPointF[] landmarks, float[] score);
@@ -57,17 +48,13 @@ public class QualityOfResolution {
     /**
      * 评估人脸尺寸
      *
-     * @param imageData
-     * @param face
-     * @param landmarks
-     * @param score     [output] quality score
+     * @param score [output] quality score
      * @return QualityLevel
      */
     public QualityLevel check(SeetaImageData imageData, SeetaRect face, SeetaPointF[] landmarks, float[] score) {
         int index = this.checkCore(imageData, face, landmarks, score);
 
-        QualityLevel level = QualityLevel.values()[index];
-        return level;
+        return QualityLevel.values()[index];
     }
 
     /**

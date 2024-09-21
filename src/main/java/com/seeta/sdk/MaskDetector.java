@@ -5,9 +5,6 @@ package com.seeta.sdk;
  * 口罩检测器
  */
 public class MaskDetector {
-//    static {
-//        System.loadLibrary("SeetaMaksDetector200_java");
-//    }
 
     public long impl = 0;
 
@@ -18,11 +15,6 @@ public class MaskDetector {
     private native void construct(SeetaModelSetting setting) throws Exception;
 
     public native void dispose();
-
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
 
     /**
      * 人脸口罩检测器

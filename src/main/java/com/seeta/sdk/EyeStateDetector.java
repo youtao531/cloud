@@ -6,9 +6,6 @@ package com.seeta.sdk;
  * @author youtao531
  */
 public class EyeStateDetector {
-//    static{
-//        System.loadLibrary("SeetaEyeStateDetector200_java");
-//    }
 
     public long impl = 0;
 
@@ -20,25 +17,9 @@ public class EyeStateDetector {
 
     public native void dispose();
 
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
-
-//    public void Detect(SeetaImageData imageData, SeetaPointF[] points, EYE_STATE[] eyeStatus) {
-//        if (eyeStatus.length < 2) return;
-//
-//        int[] eyeStateIndexs = new int[2];
-//        DetectCore(imageData, points, eyeStateIndexs);
-//        eyeStatus[0] = EYE_STATE.values()[eyeStateIndexs[0]];
-//        eyeStatus[1] = EYE_STATE.values()[eyeStateIndexs[1]];
-//    }
-
     /**
      * 眼睛状态
      *
-     * @param imageData
-     * @param points
      * @return EYE_STATE[]
      */
     public EYE_STATE[] detect(SeetaImageData imageData, SeetaPointF[] points) {

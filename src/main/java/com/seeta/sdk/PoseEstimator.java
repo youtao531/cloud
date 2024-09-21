@@ -38,11 +38,5 @@ public class PoseEstimator {
 
     public native void dispose();
 
-
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.dispose();
-    }
-
     public native void Estimate(SeetaImageData image, SeetaRect face, float[] yaw, float[] pitch, float[] roll);
 }

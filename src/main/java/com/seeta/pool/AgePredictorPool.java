@@ -22,16 +22,15 @@ public class AgePredictorPool extends GenericObjectPool<AgePredictor> {
      * this.abandonedConfig = null;
      */
     public AgePredictorPool(SeetaConfSetting config) {
-
-        super(new PooledObjectFactory<AgePredictor>() {
+        super(new PooledObjectFactory<>() {
 
             /**
-             *  borrowObject方法的主要流程是首先看里面的idleReferences是否为空，如果不为空，则从里面取一个对象出来并返回，否则通过factory来创建一个object。
+             * borrowObject方法的主要流程是首先看里面的idleReferences是否为空，如果不为空，则从里面取一个对象出来并返回，否则通过factory来创建一个object。
              */
             @Override
-            public PooledObject makeObject() throws Exception {
+            public PooledObject<AgePredictor> makeObject() throws Exception {
                 AgePredictor detector = new AgePredictor(config.getSeetaModelSetting());
-                return new DefaultPooledObject(detector);
+                return new DefaultPooledObject<>(detector);
             }
 
             @Override
@@ -51,7 +50,7 @@ public class AgePredictorPool extends GenericObjectPool<AgePredictor> {
             }
 
             /**
-             *  激活一个对象，使其可用用
+             * 激活一个对象，使其可用用
              */
             @Override
             public void activateObject(PooledObject<AgePredictor> pooledObject) throws Exception {

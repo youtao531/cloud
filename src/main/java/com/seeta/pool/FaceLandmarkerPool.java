@@ -13,7 +13,7 @@ import org.apache.commons.pool2.impl.GenericObjectPool;
 public class FaceLandmarkerPool extends GenericObjectPool<FaceLandmarker> {
 
     public FaceLandmarkerPool(SeetaConfSetting config) {
-        super(new PooledObjectFactory<FaceLandmarker>() {
+        super(new PooledObjectFactory<>() {
 
             @Override
             public PooledObject<FaceLandmarker> makeObject() throws Exception {

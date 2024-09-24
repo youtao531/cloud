@@ -25,17 +25,18 @@ public class FaceDetectorPool extends GenericObjectPool<FaceDetector> {
      */
     public FaceDetectorPool(SeetaConfSetting config) {
 
-        super(new PooledObjectFactory<FaceDetector>() {
+        super(new PooledObjectFactory<>() {
 
             /**
-             *  borrowObject方法的主要流程是首先看里面的idleReferences是否为空，如果不为空，则从里面取一个对象出来并返回，否则通过factory来创建一个object。
+             * borrowObject方法的主要流程是首先看里面的idleReferences是否为空，如果不为空，则从里面取一个对象出来并返回，否则通过factory来创建一个object。
+             *
              * @return
              * @throws Exception
              */
             @Override
-            public PooledObject makeObject() throws Exception {
+            public PooledObject<FaceDetector> makeObject() throws Exception {
                 FaceDetector detector = new FaceDetector(config.getSeetaModelSetting());
-                return new DefaultPooledObject(detector);
+                return new DefaultPooledObject<>(detector);
             }
 
             @Override
@@ -46,6 +47,7 @@ public class FaceDetectorPool extends GenericObjectPool<FaceDetector> {
 
             /**
              * 验证对象是否可用
+             *
              * @param pooledObject
              * @return
              */
@@ -57,7 +59,8 @@ public class FaceDetectorPool extends GenericObjectPool<FaceDetector> {
             }
 
             /**
-             *  激活一个对象，使其可用用
+             * 激活一个对象，使其可用用
+             *
              * @param pooledObject
              * @throws Exception
              */
@@ -69,6 +72,7 @@ public class FaceDetectorPool extends GenericObjectPool<FaceDetector> {
 
             /**
              * 钝化一个对象,也可以理解为反初始化
+             *
              * @param pooledObject
              * @throws Exception
              */

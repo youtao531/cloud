@@ -1,5 +1,7 @@
 package com.framework.cloud.infrastructure.web.interceptor;
 
+import com.framework.cloud.application.ApiRecordService;
+import com.framework.cloud.domain.model.ApiRecord;
 import com.framework.cloud.domain.model.ComHeaders;
 import com.framework.cloud.infrastructure.web.WebParamUtil;
 import com.framework.cloud.infrastructure.web.context.OpenContextImpl;
@@ -7,6 +9,7 @@ import com.framework.cloud.infrastructure.web.context.ServiceContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.dromara.hutool.extra.spring.SpringUtil;
 import org.dromara.hutool.http.server.servlet.ServletUtil;
 import org.dromara.hutool.json.JSONUtil;
 import org.slf4j.MDC;
@@ -77,6 +80,9 @@ public class ServiceContextInterceptor implements HandlerInterceptor {
             Map<String, String> headerMap = ServletUtil.getHeaderMap(request);
             Map<String, Object> requestParams = WebParamUtil.getRequestParams(request);
             context.setOpenContext(new OpenContextImpl(requestParams, headerMap, remoteIp));
+
+            // api record
+            SpringUtil.getBean(ApiRecordService.class).record(new ApiRecord(request.getRequestURI(), request.getMethod()));
         }
     }
 }

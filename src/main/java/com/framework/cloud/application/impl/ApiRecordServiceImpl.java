@@ -16,7 +16,6 @@ public class ApiRecordServiceImpl implements ApiRecordService {
     @Async
     @Override
     public void record(ApiRecord record) {
-        // TODO save to db.
         log.info("record: {}", record);
     }
 }

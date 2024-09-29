@@ -367,17 +367,4 @@ public class TzPaddleCardHelper implements PaddleCardHelper {
         x.setText(text);
         return x;
     }
-
-    public static void main(String[] args) {
-        String str = "Jinsia-GenderKE";
-
-        System.out.println(str.replaceAll("\\p{P}", "")); //仅删除特殊字符
-        System.out.println(str.replaceAll("[^a-zA-Z\\s]", "")); //删除特殊字符和数字
-        System.out.println(str.replaceAll("[^a-zA-Z]", "")); //删除空格、特殊字符和数字
-        System.out.println(str.replaceAll("\\s+", "")); //仅删除空格
-        System.out.println(str.replaceAll("\\p{Punct}", "")); //仅删除特殊字符
-        System.out.println(str.replaceAll("\\W", "")); //删除空格、特殊字符但不删除数字
-        System.out.println(str.replaceAll("\\p{Punct}+", "")); //仅删除特殊字符
-        System.out.println(str.replaceAll("\\p{Punct}|\\d", "")); //删除特殊字符和数字
-    }
 }

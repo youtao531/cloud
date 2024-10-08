@@ -14,7 +14,7 @@
         <deeplearning4j.version>1.0.0-M2.1</deeplearning4j.version>
         <ip2region.version>2.7.0</ip2region.version>
         <knife4j.version>4.5.0</knife4j.version>
-        <hutool.version>6.0.0-M14</hutool.version>
+        <hutool.version>6.0.0-M17</hutool.version>
         <lombok.version>1.18.32</lombok.version>
     </properties>
 
@@ -104,6 +104,14 @@
                     <target>${java.version}</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
+            </plugin>
+            <!--
+               检查依赖的更新 mvn versions:display-dependency-updates
+               更新依赖到最新 mvn versions:use-latest-releases
+           -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

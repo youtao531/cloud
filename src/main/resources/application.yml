@@ -29,6 +29,23 @@ spring:
     use-code-as-default-message: false
     always-use-message-format: false
     fallback-to-system-locale: true
+  datasource:
+    hikari:
+      pool-name: hp
+      minimum-idle: 4
+      maximum-pool-size: 8
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      database: ${REDIS_DB}
+      username: ${REDIS_USER}
+      password: ${REDIS_PASS}
+      connect-timeout: ${REDIS_TIMEOUT:3s}
+      timeout: ${REDIS_TIMEOUT:3s}
+      lettuce:
+        pool:
+          enabled: true
 management:
   server:
     port: ${server.port}
@@ -50,6 +67,18 @@ logging:
       max-history: 15
   level:
     com.makto.seetaface: debug
+mybatis-plus:
+  type-aliases-package: com.framework.cloud.**.entity
+  mapper-locations: classpath*:com/framework/cloud/**/domain/mapper/*.xml
+  configuration:
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+  global-config:
+    banner: false
+    db-config:
+      id-type: AUTO
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 knife4j:
   enable: true
   setting:
